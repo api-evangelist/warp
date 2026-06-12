@@ -1,0 +1,183 @@
+---
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Warp
+providerId: warp
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+tags:
+  - Developer Tools
+  - Terminal
+  - AI Agents
+  - Cloud Agents
+description: Warp offers five pricing tiers from free to enterprise, with credit-based usage for cloud agent runs and AI features.
+sources:
+  - https://www.warp.dev/pricing
+plans:
+  - id: warp-free
+    name: Free
+    type: free
+    description: Up to 10 seats, limited Warp Agent and cloud agents access, bring your own API key support, basic collaboration features.
+    entries:
+      - label: Seats
+        name: seats
+        type: quota
+        metric: seats
+        limit: 10
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+      - label: Monthly Credits
+        name: credits
+        type: quota
+        metric: credits
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+      - label: Warp Agent Access
+        name: warp-agent-access
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+  - id: warp-build
+    name: Build
+    type: freemium
+    description: Up to 10 seats, 1,500 monthly credits, full Warp Agent access with frontier models, extended cloud agents access, highest codebase indexing limits, unlimited Warp Drive objects, private email support.
+    entries:
+      - label: Seats
+        name: seats
+        type: quota
+        metric: seats
+        limit: 10
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '20'
+        userMultiplied: false
+      - label: Monthly Credits
+        name: credits
+        type: quota
+        metric: credits
+        limit: 1500
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '20'
+        userMultiplied: false
+      - label: Warp Drive Objects
+        name: warp-drive-objects
+        type: boolean
+        metric: feature
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+  - id: warp-max
+    name: Max
+    type: paid
+    description: Up to 10 seats, 18,000 monthly credits (12x Build), everything in Build with maximum capacity.
+    entries:
+      - label: Seats
+        name: seats
+        type: quota
+        metric: seats
+        limit: 10
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '200'
+        userMultiplied: false
+      - label: Monthly Credits
+        name: credits
+        type: quota
+        metric: credits
+        limit: 18000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '200'
+        userMultiplied: false
+  - id: warp-business
+    name: Business
+    type: paid
+    description: Up to 25 seats, 1,500 monthly credits, team usage metrics, admin-configurable data controls, SAML-based SSO.
+    entries:
+      - label: Seats
+        name: seats
+        type: quota
+        metric: seats
+        limit: 25
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '50'
+        userMultiplied: false
+      - label: Monthly Credits
+        name: credits
+        type: quota
+        metric: credits
+        limit: 1500
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '50'
+        userMultiplied: false
+      - label: SAML SSO
+        name: saml-sso
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+  - id: warp-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Unlimited seats, custom credit pools, advanced spend controls, enterprise admin controls, dedicated account manager, shared Slack channel, white-glove onboarding, self-host options.
+    entries:
+      - label: Seats
+        name: seats
+        type: quota
+        metric: seats
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'custom'
+        userMultiplied: false
+      - label: Monthly Credits
+        name: credits
+        type: quota
+        metric: credits
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'custom'
+        userMultiplied: false
+      - label: Self-Host Option
+        name: self-host
+        type: boolean
+        metric: feature
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'custom'
+        userMultiplied: false

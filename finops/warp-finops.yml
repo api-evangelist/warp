@@ -1,0 +1,55 @@
+---
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Warp
+providerId: warp
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+description: FOCUS-aligned FinOps for Warp's Oz cloud agent platform, covering credit-based AI agent consumption across plan tiers.
+sources:
+  - https://www.warp.dev/pricing
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Warp
+serviceCategory: Developer Tools
+billingModel:
+  pricingCategory: Subscription with credit-based consumption
+  billingFrequency: Monthly
+  billingCurrency: USD
+focusColumns:
+  ServiceName: Warp Oz Cloud Agents
+  ServiceCategory: Developer Tools
+  ProviderName: Warp
+  PublisherName: Warp
+  BillingCurrency: USD
+meters:
+  - name: Agent Run Credits
+    unit: credits
+    aggregation: sum
+    notes: Each cloud agent run consumes credits; volume-based discounts available on Build plan and above; auto-reload and team-wide spend caps configurable
+  - name: Workspace Seats
+    unit: seats
+    aggregation: max
+    notes: Billed per seat up to plan maximum (10 for Free/Build/Max, 25 for Business, unlimited for Enterprise)
+  - name: Annual Discount
+    unit: percentage
+    aggregation: max
+    notes: 10% discount available on Build ($18/mo) and Business ($45/mo) plans when billed annually; Max plan $180/mo annually
+principles:
+  - name: Visibility
+    description: Track Warp Oz cloud agent credit consumption monthly per workspace using the Enterprise Analytics API and team usage metrics dashboard.
+  - name: Optimization
+    description: Right-size plan tier to credit needs; use bring-your-own API key (BYOK) feature on Free plan to reduce platform credit spend; leverage auto-reload and spend caps on Build plan to avoid unexpected charges.
+  - name: Accountability
+    description: Use admin-configurable data controls (Business/Enterprise) and team-wide spend caps to allocate cloud agent costs by team or project.
+  - name: Governance
+    description: Enterprise plan provides advanced spend controls and dedicated account management; SAML SSO (Business/Enterprise) enables centralized identity and access governance.

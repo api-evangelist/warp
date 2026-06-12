@@ -1,0 +1,106 @@
+---
+aid: warp
+name: Warp
+description: >-
+  Warp is an open-source, Rust-based, GPU-accelerated agentic development environment
+  built on top of a modern terminal. It combines a high-performance terminal with AI-powered
+  cloud agents (the Oz platform) to help developers build, test, deploy, and debug code
+  autonomously. The Oz API lets external systems trigger and monitor cloud agent runs over
+  HTTP, making it suitable for CI pipelines, backend services, and internal tooling. Warp
+  also provides Warp Drive for team collaboration and workflow sharing, and supports MCP
+  servers for extending agent capabilities with custom tools and data sources.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Developer Tools
+  - Terminal
+  - AI Agents
+  - Cloud Agents
+  - Agentic Development
+url: https://raw.githubusercontent.com/api-evangelist/warp/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+apis:
+  - aid: warp:oz-agent-api
+    name: Warp Oz Agent API
+    description: >-
+      The Oz Agent API lets you create and monitor cloud agent runs over HTTP from any
+      system without requiring the Warp desktop app. It supports creating runs, listing
+      and retrieving run status, canceling runs, submitting follow-up prompts, managing
+      scheduled agents, managing agent identities, and inspecting run conversations and
+      artifacts. Authentication uses API keys prefixed with wk-.
+    humanURL: https://docs.warp.dev/reference/api-and-sdk/
+    baseURL: https://app.warp.dev/api/v1
+    tags:
+      - AI Agents
+      - Cloud Agents
+      - Developer Tools
+    properties:
+      - type: Documentation
+        url: https://docs.warp.dev/reference/api-and-sdk/
+      - type: PythonSDK
+        url: https://github.com/warpdotdev/oz-sdk-python
+      - type: TypeScriptSDK
+        url: https://github.com/warpdotdev/oz-sdk-typescript
+  - aid: warp:enterprise-analytics-api
+    name: Warp Enterprise Analytics API
+    description: >-
+      The Enterprise Analytics API provides team usage metrics and administrative
+      insights for Enterprise plan customers. It enables organizations to track
+      agent usage, monitor spend, and audit team activity within the Warp platform.
+    humanURL: https://docs.warp.dev/enterprise/enterprise-features/analytics-api/
+    tags:
+      - Enterprise
+      - Analytics
+      - Developer Tools
+    properties:
+      - type: Documentation
+        url: https://docs.warp.dev/enterprise/enterprise-features/analytics-api/
+  - aid: warp:oz-cli
+    name: Warp Oz CLI
+    description: >-
+      The Oz CLI is a command-line interface for interacting with the Warp Oz agent
+      platform. It allows developers to trigger cloud agent runs, manage environments,
+      and authenticate headlessly using API keys — ideal for CI pipelines, servers,
+      and containers where the Warp desktop app is unavailable.
+    humanURL: https://docs.warp.dev/reference/cli/
+    tags:
+      - CLI
+      - Developer Tools
+      - Cloud Agents
+    properties:
+      - type: Documentation
+        url: https://docs.warp.dev/reference/cli/
+      - type: QuickStart
+        url: https://docs.warp.dev/reference/cli/quickstart
+common:
+  - type: Website
+    url: https://www.warp.dev/
+  - type: Documentation
+    url: https://docs.warp.dev/
+  - type: GitHubOrganization
+    url: https://github.com/warpdotdev
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/warpdotdev
+  - type: X
+    url: https://x.com/warpdotdev
+  - type: Blog
+    url: https://www.warp.dev/blog
+  - type: Changelog
+    url: https://docs.warp.dev/changelog/
+  - type: Pricing
+    url: https://www.warp.dev/pricing
+  - type: StatusPage
+    url: https://status.warp.dev/
+  - type: MCP
+    url: https://docs.warp.dev/agent-platform/capabilities/mcp/
+  - type: Plans
+    url: plans/warp-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/warp-rate-limits.yml
+  - type: FinOps
+    url: finops/warp-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

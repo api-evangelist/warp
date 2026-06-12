@@ -1,0 +1,38 @@
+---
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Warp
+providerId: warp
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+tags:
+  - Rate Limiting
+description: Warp Oz API rate limits are credit-based per plan tier; specific per-endpoint request limits are not publicly documented but standard HTTP 429 responses are returned when throttled.
+sources:
+  - https://docs.warp.dev/reference/api-and-sdk/
+  - https://www.warp.dev/pricing
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: Oz Agent API - Credit Usage
+    scope: org
+    metric: credits_per_month
+    limit: 1500
+    timeFrame: month
+    notes: Build plan; Max plan allows 18,000 credits/month; Enterprise has custom pools
+  - name: Oz Agent API - Concurrent Runs
+    scope: user
+    metric: concurrent_runs
+    limit: -1
+    timeFrame: usage
+    notes: Specific concurrent run limits not publicly documented; governed by credit consumption and plan tier
+  - name: API Key Expiry
+    scope: key
+    metric: key_lifetime_days
+    limit: -1
+    timeFrame: usage
+    notes: API keys (prefixed wk-) can be set to expire in 1 day, 30 days, 90 days, or never
