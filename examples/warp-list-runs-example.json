@@ -1,0 +1,58 @@
+{
+  "description": "Example: GET /agent/runs — list cloud agent runs",
+  "request": {
+    "method": "GET",
+    "url": "https://app.warp.dev/api/v1/agent/runs?limit=5",
+    "headers": {
+      "Authorization": "Bearer wk-your-api-key"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "runs": [
+        {
+          "run_id": "run_01hzexample1234567890abcdef",
+          "task_id": "run_01hzexample1234567890abcdef",
+          "title": "Scan for TODO comments",
+          "state": "completed",
+          "prompt": "Scan the repository for any TODO comments and create a GitHub issue summarizing them.",
+          "created_at": "2026-06-12T10:00:00Z",
+          "updated_at": "2026-06-12T10:05:23Z",
+          "started_at": "2026-06-12T10:00:05Z",
+          "run_time": "PT5M18S",
+          "source": "api",
+          "session_link": "https://app.warp.dev/session/run_01hzexample1234567890abcdef",
+          "conversation_id": "conv_01hzexample9876543210zyxwvu",
+          "creator": {
+            "user_id": "usr_01hzexampleuser",
+            "email": "developer@example.com",
+            "display_name": "Developer User"
+          },
+          "request_usage": {
+            "input_tokens": 12450,
+            "output_tokens": 3821,
+            "total_cost_usd": 0.047
+          }
+        },
+        {
+          "run_id": "run_01hzexample0987654321fedcba",
+          "task_id": "run_01hzexample0987654321fedcba",
+          "title": "Deploy to staging",
+          "state": "running",
+          "prompt": "Run the deployment pipeline for the staging environment and confirm all health checks pass.",
+          "created_at": "2026-06-12T09:50:00Z",
+          "updated_at": "2026-06-12T09:58:45Z",
+          "started_at": "2026-06-12T09:50:12Z",
+          "source": "schedule",
+          "session_link": "https://app.warp.dev/session/run_01hzexample0987654321fedcba",
+          "conversation_id": "conv_01hzexample1111111111aaaaaa"
+        }
+      ],
+      "page_info": {
+        "has_next_page": true,
+        "end_cursor": "cursor_01hzexamplenextpage"
+      }
+    }
+  }
+}

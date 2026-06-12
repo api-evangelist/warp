@@ -43,6 +43,20 @@ apis:
         url: https://github.com/warpdotdev/oz-sdk-python
       - type: TypeScriptSDK
         url: https://github.com/warpdotdev/oz-sdk-typescript
+      - type: OpenAPI
+        url: openapi/warp-oz-agent-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/warp-run-schema.json
+      - type: JSONSchema
+        url: json-schema/warp-run-agent-request-schema.json
+      - type: JSONSchema
+        url: json-schema/warp-scheduled-agent-schema.json
+      - type: Example
+        url: examples/warp-run-agent-example.json
+      - type: Example
+        url: examples/warp-list-runs-example.json
+      - type: Example
+        url: examples/warp-create-schedule-example.json
   - aid: warp:enterprise-analytics-api
     name: Warp Enterprise Analytics API
     description: >-
@@ -101,6 +115,10 @@ common:
     url: rate-limits/warp-rate-limits.yml
   - type: FinOps
     url: finops/warp-finops.yml
+  - type: Vocabulary
+    url: vocabulary/warp-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/warp-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

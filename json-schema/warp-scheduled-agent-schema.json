@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/warp/json-schema/warp-scheduled-agent-schema.json",
+  "title": "ScheduledAgentItem",
+  "description": "Represents a Warp Oz scheduled agent — a recurring agent run configured with a cron expression.",
+  "type": "object",
+  "properties": {
+    "schedule_id": {
+      "type": "string",
+      "description": "Unique identifier for the schedule"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title for the scheduled agent"
+    },
+    "prompt": {
+      "type": "string",
+      "description": "The prompt/instruction used each time the schedule fires"
+    },
+    "cron": {
+      "type": "string",
+      "description": "Cron expression defining the schedule (e.g. '0 9 * * 1-5' for weekdays at 9am UTC)"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Timezone for the cron expression (e.g. 'America/New_York')"
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the schedule is currently active"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the schedule was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the schedule was last updated"
+    },
+    "next_run_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the next scheduled run"
+    },
+    "last_run_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp of the most recent run triggered by this schedule"
+    },
+    "config": {
+      "type": "object",
+      "description": "Agent configuration used for each triggered run"
+    },
+    "history": {
+      "type": "array",
+      "description": "Recent execution history for this schedule",
+      "items": {
+        "type": "object",
+        "properties": {
+          "run_id": { "type": "string" },
+          "state": { "type": "string" },
+          "triggered_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

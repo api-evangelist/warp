@@ -1,0 +1,90 @@
+vocabulary:
+  name: Warp Oz Agent API Vocabulary
+  description: >-
+    Core terms and concepts used across the Warp Oz Agent API — the HTTP interface
+    for creating, managing, and monitoring cloud AI agent runs on the Warp platform.
+  version: "1.0.0"
+  terms:
+    - name: run
+      description: >-
+        A single execution of an AI agent in response to a prompt. Identified by
+        run_id, progresses through states (queued → running → completed/failed/cancelled),
+        and is associated with a conversation.
+    - name: run_id
+      description: >-
+        Unique string identifier for a run, prefixed with "run_". Used to retrieve
+        status, timeline, conversation history, and to cancel or follow up on a run.
+    - name: prompt
+      description: >-
+        The natural-language instruction provided to the AI agent for a given run.
+        The agent interprets and executes the prompt autonomously.
+    - name: skill
+      description: >-
+        A pre-defined agent behavior loaded from a SKILL.md file in a GitHub repository.
+        Skills provide reusable instructions and context for common tasks (e.g. deploy,
+        test, audit). Referenced as "org/repo:skill_name".
+    - name: mode
+      description: >-
+        The execution mode for a run. "normal" runs the agent end-to-end; "plan"
+        generates a plan before acting; "auto" lets the agent decide autonomously.
+    - name: conversation
+      description: >-
+        A persistent multi-turn context that connects a series of agent runs. A
+        conversation_id enables follow-up runs that continue from prior context.
+    - name: schedule
+      description: >-
+        A recurring agent configuration that fires runs on a cron expression. Schedules
+        can be paused, resumed, and queried for execution history.
+    - name: harness
+      description: >-
+        The cloud execution environment for a run, typically tied to a specific GitHub
+        repository and branch. The harness provides filesystem, secrets, and tooling
+        context to the agent.
+    - name: agent_identity
+      description: >-
+        A named, team-owned execution principal for agent runs, allowing runs to be
+        attributed to a service identity rather than a user account.
+    - name: environment
+      description: >-
+        A reusable cloud configuration object that bundles harness, MCP servers, model
+        preferences, and secret references for consistent run setup.
+    - name: artifact
+      description: >-
+        A structured output produced by an agent run, such as a plan, pull request,
+        screenshot, or file. Artifacts are retrievable via the artifact UID.
+    - name: mcp_server
+      description: >-
+        A Model Context Protocol server that extends agent capabilities with custom
+        tools and data sources. MCP servers are configured per run or per environment.
+    - name: api_key
+      description: >-
+        A bearer token prefixed with "wk-" used to authenticate HTTP requests to the
+        Oz Agent API. Passed in the Authorization header.
+    - name: run_state
+      description: >-
+        The lifecycle status of a run. Values include queued, running, completed,
+        failed, cancelled, and paused.
+    - name: conversation_step
+      description: >-
+        A single exchange within a conversation, containing one or more content blocks
+        (text, actions, action results, or events) representing agent and user turns.
+    - name: timeline
+      description: >-
+        A chronological sequence of events for a run, providing a detailed audit trail
+        of agent actions, tool calls, and outputs.
+    - name: self_hosted_worker
+      description: >-
+        A user-operated compute node that can execute agent runs instead of Warp's
+        managed cloud infrastructure, useful for on-premise or regulated environments.
+    - name: request_usage
+      description: >-
+        Token consumption and cost metrics for a run, including input_tokens,
+        output_tokens, and total_cost_usd.
+    - name: followup
+      description: >-
+        A subsequent prompt submitted to a running or completed agent run within the
+        same conversation, enabling interactive, multi-turn workflows.
+    - name: warp_drive
+      description: >-
+        Warp's team collaboration layer for sharing workflows, commands, and environment
+        configurations across team members.

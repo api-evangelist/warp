@@ -1,0 +1,92 @@
+{
+  "@context": {
+    "@vocab": "https://api-evangelist.github.io/warp/vocabulary#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "run_id": "@id",
+    "title": "schema:name",
+    "description": "schema:description",
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "started_at": {
+      "@id": "schema:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "session_link": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "trigger_url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+
+    "RunItem": "warp:Run",
+    "RunAgentRequest": "warp:RunAgentRequest",
+    "RunAgentResponse": "warp:RunAgentResponse",
+    "ScheduledAgentItem": "warp:ScheduledAgent",
+    "ConversationResponse": "warp:Conversation",
+    "ArtifactItem": "warp:Artifact",
+    "AgentListItem": "warp:AgentSkill",
+    "CloudEnvironment": "warp:Environment",
+
+    "warp": "https://api-evangelist.github.io/warp/vocabulary#",
+
+    "prompt": "warp:prompt",
+    "state": "warp:runState",
+    "mode": "warp:runMode",
+    "skill": "warp:skillSpec",
+    "conversation_id": "warp:conversationId",
+    "schedule_id": "warp:scheduleId",
+    "agent_identity_uid": "warp:agentIdentityUid",
+    "parent_run_id": "warp:parentRunId",
+    "run_time": "warp:runTime",
+    "source": "warp:runSource",
+    "execution_location": "warp:executionLocation",
+    "interactive": "warp:interactive",
+    "team": "warp:teamOwned",
+    "cron": "warp:cronExpression",
+    "timezone": "warp:timezone",
+    "enabled": "warp:enabled",
+
+    "creator": {
+      "@id": "schema:creator",
+      "@type": "schema:Person"
+    },
+    "executor": {
+      "@id": "warp:executor",
+      "@type": "schema:Person"
+    },
+    "request_usage": "warp:requestUsage",
+    "input_tokens": "warp:inputTokens",
+    "output_tokens": "warp:outputTokens",
+    "total_cost_usd": "warp:totalCostUsd",
+
+    "config": "warp:agentConfig",
+    "harness": "warp:harness",
+    "mcp_servers": "warp:mcpServers",
+    "attachments": "warp:attachments",
+    "runs": "warp:runs",
+    "schedules": "warp:schedules",
+    "artifacts": "warp:artifacts",
+    "page_info": "warp:pageInfo",
+    "has_next_page": "warp:hasNextPage",
+    "end_cursor": "warp:endCursor",
+    "history": "warp:history",
+    "next_run_at": {
+      "@id": "warp:nextRunAt",
+      "@type": "xsd:dateTime"
+    },
+    "last_run_at": {
+      "@id": "warp:lastRunAt",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

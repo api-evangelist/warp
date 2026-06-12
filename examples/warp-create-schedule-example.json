@@ -1,0 +1,37 @@
+{
+  "description": "Example: POST /agent/schedules — create a scheduled agent run",
+  "request": {
+    "method": "POST",
+    "url": "https://app.warp.dev/api/v1/agent/schedules",
+    "headers": {
+      "Authorization": "Bearer wk-your-api-key",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "title": "Daily dependency audit",
+      "prompt": "Check all project dependencies for known CVEs and summarize any critical findings in a Slack message.",
+      "cron": "0 8 * * 1-5",
+      "timezone": "America/New_York",
+      "config": {
+        "harness": {
+          "repo": "my-org/my-repo",
+          "branch": "main"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "schedule_id": "sched_01hzexamplescheduleid12345",
+      "title": "Daily dependency audit",
+      "prompt": "Check all project dependencies for known CVEs and summarize any critical findings in a Slack message.",
+      "cron": "0 8 * * 1-5",
+      "timezone": "America/New_York",
+      "enabled": true,
+      "created_at": "2026-06-12T10:15:00Z",
+      "updated_at": "2026-06-12T10:15:00Z",
+      "next_run_at": "2026-06-13T12:00:00Z"
+    }
+  }
+}
