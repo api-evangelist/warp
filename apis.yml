@@ -10,7 +10,7 @@ description: >-
   also provides Warp Drive for team collaboration and workflow sharing, and supports MCP
   servers for extending agent capabilities with custom tools and data sources.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Developer Tools
   - Terminal
