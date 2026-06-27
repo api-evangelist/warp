@@ -51,11 +51,11 @@ apis:
         url: json-schema/warp-run-agent-request-schema.json
       - type: JSONSchema
         url: json-schema/warp-scheduled-agent-schema.json
-      - type: Example
+      - type: Examples
         url: examples/warp-run-agent-example.json
-      - type: Example
+      - type: Examples
         url: examples/warp-list-runs-example.json
-      - type: Example
+      - type: Examples
         url: examples/warp-create-schedule-example.json
   - aid: warp:enterprise-analytics-api
     name: Warp Enterprise Analytics API
@@ -86,7 +86,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.warp.dev/reference/cli/
-      - type: QuickStart
+      - type: GettingStarted
         url: https://docs.warp.dev/reference/cli/quickstart
 common:
   - type: Website
@@ -101,7 +101,7 @@ common:
     url: https://x.com/warpdotdev
   - type: Blog
     url: https://www.warp.dev/blog
-  - type: Changelog
+  - type: ChangeLog
     url: https://docs.warp.dev/changelog/
   - type: Pricing
     url: https://www.warp.dev/pricing
