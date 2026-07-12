@@ -89,6 +89,12 @@ apis:
       - type: GettingStarted
         url: https://docs.warp.dev/reference/cli/quickstart
 common:
+  - type: TrustCenter
+    url: security/warp-trust-center.yml
+  - type: DomainSecurity
+    url: security/warp-domain-security.yml
+  - type: Authentication
+    url: authentication/warp-authentication.yml
   - type: Website
     url: https://www.warp.dev/
   - type: Documentation

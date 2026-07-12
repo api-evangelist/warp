@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/warp-oz-agent-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Authentication via a Warp API key.
+  sources:
+  - openapi/warp-oz-agent-api-openapi.yml
