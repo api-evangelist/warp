@@ -89,6 +89,8 @@ apis:
       - type: GettingStarted
         url: https://docs.warp.dev/reference/cli/quickstart
 common:
+  - type: AgenticAccess
+    url: agentic-access/warp-agentic-access.yml
   - type: TrustCenter
     url: security/warp-trust-center.yml
   - type: DomainSecurity
