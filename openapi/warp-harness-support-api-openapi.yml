@@ -1,0 +1,140 @@
+openapi: 3.0.0
+info:
+  title: Oz agent harness-support API
+  version: 1.0.0
+  description: "API for creating, managing, and querying Oz cloud agent runs.\n\nThese endpoints allow users to programmatically spawn agents, list runs, \nand retrieve detailed run information.\n"
+  contact:
+    name: Warp Support
+    url: https://docs.warp.dev
+    email: support@warp.dev
+  license:
+    name: Proprietary
+servers:
+- url: https://app.warp.dev/api/v1
+  description: Warp Server
+tags:
+- name: harness-support
+paths:
+  /harness-support/transcript:
+    get:
+      summary: Download the raw third-party harness transcript
+      description: 'Redirects to a signed download URL for the raw third-party harness transcript
+
+        (e.g. `claude_code.json`) of the current task''s conversation. Only supported
+
+        for conversations produced by non-Oz harnesses; Oz conversations 400.
+
+
+        This may only be called from within a cloud agent execution environment whose
+
+        task already has an associated conversation (e.g. on a resumed run).
+
+        '
+      operationId: getTranscriptDownload
+      tags:
+      - harness-support
+      security:
+      - bearerAuth: []
+      responses:
+        '307':
+          description: Redirect to a signed download URL for the transcript
+        '400':
+          description: Task has no conversation, or conversation format does not support transcript downloads
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: No permission to access the conversation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Conversation or transcript not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      description: 'Error response following RFC 7807 (Problem Details for HTTP APIs).
+
+        Includes backward-compatible extension members.
+
+
+        The response uses the `application/problem+json` content type.
+
+        Additional extension members (e.g., `auth_url`, `provider`) may be
+
+        present depending on the error code.
+
+        '
+      required:
+      - type
+      - title
+      - status
+      - error
+      properties:
+        type:
+          type: string
+          format: uri
+          description: 'A URI reference that identifies the problem type (RFC 7807).
+
+            Format: `https://docs.warp.dev/reference/api-and-sdk/troubleshooting/errors/{error_code}`
+
+            See PlatformErrorCode for the list of possible error codes.
+
+            '
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type (RFC 7807)
+        status:
+          type: integer
+          description: The HTTP status code for this occurrence of the problem (RFC 7807)
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem (RFC 7807)
+        instance:
+          type: string
+          description: The request path that generated this error (RFC 7807)
+        error:
+          type: string
+          description: 'Human-readable error message combining title and detail.
+
+            Backward-compatible extension member for older clients.
+
+            '
+        retryable:
+          type: boolean
+          description: 'Whether the request can be retried. When true, the error is transient
+
+            and the request may be retried. When false, retrying without addressing
+
+            the underlying cause will not succeed.
+
+            '
+        trace_id:
+          type: string
+          description: OpenTelemetry trace ID for debugging and support requests
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authentication via a Warp API key.
+
+        '
