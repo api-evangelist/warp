@@ -10,7 +10,20 @@ description: >-
   also provides Warp Drive for team collaboration and workflow sharing, and supports MCP
   servers for extending agent capabilities with custom tools and data sources.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/warp.png
 tags:
   - Developer Tools
   - Terminal
@@ -22,73 +35,123 @@ created: '2026-06-12'
 modified: '2026-06-12'
 specificationVersion: '0.19'
 apis:
-  - aid: warp:oz-agent-api
-    name: Warp Oz Agent API
-    description: >-
-      The Oz Agent API lets you create and monitor cloud agent runs over HTTP from any
-      system without requiring the Warp desktop app. It supports creating runs, listing
-      and retrieving run status, canceling runs, submitting follow-up prompts, managing
-      scheduled agents, managing agent identities, and inspecting run conversations and
-      artifacts. Authentication uses API keys prefixed with wk-.
-    humanURL: https://docs.warp.dev/reference/api-and-sdk/
-    baseURL: https://app.warp.dev/api/v1
-    tags:
-      - AI Agents
-      - Cloud Agents
-      - Developer Tools
-    properties:
-      - type: Documentation
-        url: https://docs.warp.dev/reference/api-and-sdk/
-      - type: PythonSDK
-        url: https://github.com/warpdotdev/oz-sdk-python
-      - type: TypeScriptSDK
-        url: https://github.com/warpdotdev/oz-sdk-typescript
-      - type: OpenAPI
-        url: openapi/warp-oz-agent-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/warp-run-schema.json
-      - type: JSONSchema
-        url: json-schema/warp-run-agent-request-schema.json
-      - type: JSONSchema
-        url: json-schema/warp-scheduled-agent-schema.json
-      - type: Examples
-        url: examples/warp-run-agent-example.json
-      - type: Examples
-        url: examples/warp-list-runs-example.json
-      - type: Examples
-        url: examples/warp-create-schedule-example.json
-  - aid: warp:enterprise-analytics-api
-    name: Warp Enterprise Analytics API
-    description: >-
-      The Enterprise Analytics API provides team usage metrics and administrative
-      insights for Enterprise plan customers. It enables organizations to track
-      agent usage, monitor spend, and audit team activity within the Warp platform.
-    humanURL: https://docs.warp.dev/enterprise/enterprise-features/analytics-api/
-    tags:
-      - Enterprise
-      - Analytics
-      - Developer Tools
-    properties:
-      - type: Documentation
-        url: https://docs.warp.dev/enterprise/enterprise-features/analytics-api/
-  - aid: warp:oz-cli
-    name: Warp Oz CLI
-    description: >-
-      The Oz CLI is a command-line interface for interacting with the Warp Oz agent
-      platform. It allows developers to trigger cloud agent runs, manage environments,
-      and authenticate headlessly using API keys — ideal for CI pipelines, servers,
-      and containers where the Warp desktop app is unavailable.
-    humanURL: https://docs.warp.dev/reference/cli/
-    tags:
-      - CLI
-      - Developer Tools
-      - Cloud Agents
-    properties:
-      - type: Documentation
-        url: https://docs.warp.dev/reference/cli/
-      - type: GettingStarted
-        url: https://docs.warp.dev/reference/cli/quickstart
+- aid: warp:enterprise-analytics-api
+  name: Warp Enterprise Analytics API
+  description: >-
+    The Enterprise Analytics API provides team usage metrics and administrative insights for Enterprise
+    plan customers. It enables organizations to track agent usage, monitor spend, and audit team activity
+    within the Warp platform.
+  humanURL: https://docs.warp.dev/enterprise/enterprise-features/analytics-api/
+  tags:
+  - Enterprise
+  - Analytics
+  - Developer Tools
+  properties:
+  - type: Documentation
+    url: https://docs.warp.dev/enterprise/enterprise-features/analytics-api/
+- aid: warp:oz-cli
+  name: Warp Oz CLI
+  description: >-
+    The Oz CLI is a command-line interface for interacting with the Warp Oz agent platform. It allows
+    developers to trigger cloud agent runs, manage environments, and authenticate headlessly using API
+    keys — ideal for CI pipelines, servers, and containers where the Warp desktop app is unavailable.
+  humanURL: https://docs.warp.dev/reference/cli/
+  tags:
+  - CLI
+  - Developer Tools
+  - Cloud Agents
+  properties:
+  - type: Documentation
+    url: https://docs.warp.dev/reference/cli/
+  - type: GettingStarted
+    url: https://docs.warp.dev/reference/cli/quickstart
+- aid: warp:warp-agent-api
+  name: Warp agent API
+  description: Operations for running and managing cloud agents
+  humanURL: https://docs.warp.dev/reference/api-and-sdk/
+  baseURL: https://app.warp.dev/api/v1
+  tags:
+  - agent
+  properties:
+  - type: OpenAPI
+    url: openapi/warp-agent-api-openapi.yml
+  - type: Documentation
+    url: https://docs.warp.dev/reference/api-and-sdk/
+  - type: PythonSDK
+    url: https://github.com/warpdotdev/oz-sdk-python
+  - type: TypeScriptSDK
+    url: https://github.com/warpdotdev/oz-sdk-typescript
+  - type: JSONSchema
+    url: json-schema/warp-run-schema.json
+  - type: JSONSchema
+    url: json-schema/warp-run-agent-request-schema.json
+  - type: JSONSchema
+    url: json-schema/warp-scheduled-agent-schema.json
+  - type: Examples
+    url: examples/warp-run-agent-example.json
+  - type: Examples
+    url: examples/warp-list-runs-example.json
+  - type: Examples
+    url: examples/warp-create-schedule-example.json
+- aid: warp:warp-harness-support-api
+  name: Warp harness-support API
+  description: The harness-support API from Warp — 1 operation(s) for harness-support.
+  humanURL: https://docs.warp.dev/reference/api-and-sdk/
+  baseURL: https://app.warp.dev/api/v1
+  tags:
+  - harness-support
+  properties:
+  - type: OpenAPI
+    url: openapi/warp-harness-support-api-openapi.yml
+  - type: Documentation
+    url: https://docs.warp.dev/reference/api-and-sdk/
+  - type: PythonSDK
+    url: https://github.com/warpdotdev/oz-sdk-python
+  - type: TypeScriptSDK
+    url: https://github.com/warpdotdev/oz-sdk-typescript
+  - type: JSONSchema
+    url: json-schema/warp-run-schema.json
+  - type: JSONSchema
+    url: json-schema/warp-run-agent-request-schema.json
+  - type: JSONSchema
+    url: json-schema/warp-scheduled-agent-schema.json
+  - type: Examples
+    url: examples/warp-run-agent-example.json
+  - type: Examples
+    url: examples/warp-list-runs-example.json
+  - type: Examples
+    url: examples/warp-create-schedule-example.json
+- aid: warp:warp-schedules-api
+  name: Warp schedules API
+  description: Operations for creating and managing scheduled agents
+  humanURL: https://docs.warp.dev/reference/api-and-sdk/
+  baseURL: https://app.warp.dev/api/v1
+  tags:
+  - schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/warp-schedules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.warp.dev/reference/api-and-sdk/
+  - type: PythonSDK
+    url: https://github.com/warpdotdev/oz-sdk-python
+  - type: TypeScriptSDK
+    url: https://github.com/warpdotdev/oz-sdk-typescript
+  - type: JSONSchema
+    url: json-schema/warp-run-schema.json
+  - type: JSONSchema
+    url: json-schema/warp-run-agent-request-schema.json
+  - type: JSONSchema
+    url: json-schema/warp-scheduled-agent-schema.json
+  - type: Examples
+    url: examples/warp-run-agent-example.json
+  - type: Examples
+    url: examples/warp-list-runs-example.json
+  - type: Examples
+    url: examples/warp-create-schedule-example.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/warp/overview
   - type: AgenticAccess
     url: agentic-access/warp-agentic-access.yml
   - type: TrustCenter
