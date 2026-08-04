@@ -1,0 +1,2096 @@
+{
+  "info": {
+    "_postman_id": "5860a06d-195f-4636-b8fb-3bcebea2aafa",
+    "name": "Oz agent schedules API",
+    "description": "API for creating, managing, and querying Oz cloud agent runs.\n\nThese endpoints allow users to programmatically spawn agents, list runs, \nand retrieve detailed run information.\n\n\nContact Support:\n Name: Warp Support\n Email: support@warp.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:28:57.000Z",
+    "updatedAt": "2026-07-28T03:28:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5860a06d-195f-4636-b8fb-3bcebea2aafa"
+  },
+  "item": [
+    {
+      "name": "agent",
+      "item": [
+        {
+          "name": "schedules",
+          "item": [
+            {
+              "name": "{scheduleId}",
+              "item": [
+                {
+                  "name": "pause",
+                  "item": [
+                    {
+                      "name": "Pause a scheduled agent",
+                      "id": "64f53cb0-5d31-4dbb-98d6-79258cd2a7bf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId/pause",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId",
+                            "pause"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ed2ad4dd-0370-4ca0-9674-7ce350ce0ec3",
+                              "key": "scheduleId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the scheduled agent"
+                            }
+                          ]
+                        },
+                        "description": "Pause a scheduled agent. The agent will not run until resumed.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "efd5387e-c543-482a-99f7-bd83731c5a63",
+                          "name": "Scheduled agent paused successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/pause",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "pause"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"last_spawn_error\": \"<string>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"officia_62\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"incididunt64\": \"<string>\",\n          \"ad5\": \"<string>\"\n        },\n        \"headers\": {\n          \"dolor_150\": \"<string>\",\n          \"amet86\": \"<string>\",\n          \"ipsum33\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"gemini\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"<uuid>\",\n  \"environment\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"docker_image\": \"<string>\",\n    \"github_repos\": [\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      },\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      }\n    ],\n    \"setup_commands\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"<string>\",\n        \"workload_identity_federation_pool_id\": \"<string>\",\n        \"workload_identity_federation_provider_id\": \"<string>\",\n        \"service_account_email\": \"<string>\"\n      },\n      \"aws\": {\n        \"role_arn\": \"<string>\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"history\": {\n    \"last_ran\": \"<dateTime>\",\n    \"next_run\": \"<dateTime>\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-efd5387e-c543-482a-99f7-bd83731c5a63"
+                        },
+                        {
+                          "id": "1dc6fcd2-7083-445f-b0e9-8b2f4d6ee47c",
+                          "name": "Authentication required",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/pause",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "pause"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-1dc6fcd2-7083-445f-b0e9-8b2f4d6ee47c"
+                        },
+                        {
+                          "id": "df797e8e-1ad6-4800-8140-e65e05c590c9",
+                          "name": "No permission to pause schedule",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/pause",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "pause"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-df797e8e-1ad6-4800-8140-e65e05c590c9"
+                        },
+                        {
+                          "id": "26886d3b-4038-428d-bffb-f36b38ce85a1",
+                          "name": "Schedule not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/pause",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "pause"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-26886d3b-4038-428d-bffb-f36b38ce85a1"
+                        },
+                        {
+                          "id": "cecfe39e-e241-493c-979c-f73b2487c536",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/pause",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "pause"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-cecfe39e-e241-493c-979c-f73b2487c536"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-64f53cb0-5d31-4dbb-98d6-79258cd2a7bf"
+                    }
+                  ],
+                  "id": "f8348ae4-6825-4e21-9535-1c36fdce8690",
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-f8348ae4-6825-4e21-9535-1c36fdce8690"
+                },
+                {
+                  "name": "resume",
+                  "item": [
+                    {
+                      "name": "Resume a scheduled agent",
+                      "id": "6d13105d-6337-4ed8-832d-2d2d1e5fb585",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId/resume",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId",
+                            "resume"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d8d883c0-057d-4690-ab4f-34d161bd0410",
+                              "key": "scheduleId",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of the scheduled agent"
+                            }
+                          ]
+                        },
+                        "description": "Resume a paused scheduled agent. The agent will start running\naccording to its cron schedule.\n"
+                      },
+                      "response": [
+                        {
+                          "id": "6798cbfe-1560-4c9b-80ea-e6a8dc26f973",
+                          "name": "Scheduled agent resumed successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/resume",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "resume"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"last_spawn_error\": \"<string>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"officia_62\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"incididunt64\": \"<string>\",\n          \"ad5\": \"<string>\"\n        },\n        \"headers\": {\n          \"dolor_150\": \"<string>\",\n          \"amet86\": \"<string>\",\n          \"ipsum33\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"gemini\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"<uuid>\",\n  \"environment\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"docker_image\": \"<string>\",\n    \"github_repos\": [\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      },\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      }\n    ],\n    \"setup_commands\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"<string>\",\n        \"workload_identity_federation_pool_id\": \"<string>\",\n        \"workload_identity_federation_provider_id\": \"<string>\",\n        \"service_account_email\": \"<string>\"\n      },\n      \"aws\": {\n        \"role_arn\": \"<string>\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"history\": {\n    \"last_ran\": \"<dateTime>\",\n    \"next_run\": \"<dateTime>\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-6798cbfe-1560-4c9b-80ea-e6a8dc26f973"
+                        },
+                        {
+                          "id": "0d13c875-7679-44f8-954b-a564e9186954",
+                          "name": "Authentication required",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/resume",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "resume"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-0d13c875-7679-44f8-954b-a564e9186954"
+                        },
+                        {
+                          "id": "2dc0b3e7-1e5d-4e69-b0ce-d9a10350dc5f",
+                          "name": "No permission to resume schedule",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/resume",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "resume"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-2dc0b3e7-1e5d-4e69-b0ce-d9a10350dc5f"
+                        },
+                        {
+                          "id": "9ee7f36e-d759-414f-83ab-4befc852883f",
+                          "name": "Schedule not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/resume",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "resume"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-9ee7f36e-d759-414f-83ab-4befc852883f"
+                        },
+                        {
+                          "id": "df5d2483-4036-43e0-ae63-526619112869",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/agent/schedules/:scheduleId/resume",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "agent",
+                                "schedules",
+                                ":scheduleId",
+                                "resume"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "scheduleId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:28:57.000Z",
+                          "updatedAt": "2026-07-28T03:28:57.000Z",
+                          "uid": "35240-df5d2483-4036-43e0-ae63-526619112869"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-6d13105d-6337-4ed8-832d-2d2d1e5fb585"
+                    }
+                  ],
+                  "id": "6ccdb9d9-8f3a-47d0-bba7-12210edddc47",
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-6ccdb9d9-8f3a-47d0-bba7-12210edddc47"
+                },
+                {
+                  "name": "Get scheduled agent details",
+                  "id": "68bbb40c-080b-479a-96c7-c8b27c68bf32",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules",
+                        ":scheduleId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "121f445c-011b-4d7a-bb06-18cd0bfcca79",
+                          "key": "scheduleId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the scheduled agent"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve detailed information about a specific scheduled agent,\nincluding its configuration, history, and next scheduled run time.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "b715180f-ea18-41ea-92c7-7995dfba91fc",
+                      "name": "Scheduled agent details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"last_spawn_error\": \"<string>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"officia_62\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"incididunt64\": \"<string>\",\n          \"ad5\": \"<string>\"\n        },\n        \"headers\": {\n          \"dolor_150\": \"<string>\",\n          \"amet86\": \"<string>\",\n          \"ipsum33\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"gemini\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"<uuid>\",\n  \"environment\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"docker_image\": \"<string>\",\n    \"github_repos\": [\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      },\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      }\n    ],\n    \"setup_commands\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"<string>\",\n        \"workload_identity_federation_pool_id\": \"<string>\",\n        \"workload_identity_federation_provider_id\": \"<string>\",\n        \"service_account_email\": \"<string>\"\n      },\n      \"aws\": {\n        \"role_arn\": \"<string>\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"history\": {\n    \"last_ran\": \"<dateTime>\",\n    \"next_run\": \"<dateTime>\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-b715180f-ea18-41ea-92c7-7995dfba91fc"
+                    },
+                    {
+                      "id": "321bda33-9363-4112-93bd-608266d23756",
+                      "name": "Missing schedule ID",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-321bda33-9363-4112-93bd-608266d23756"
+                    },
+                    {
+                      "id": "2dd8dc1f-4e8e-41f1-9fa4-6c2b96d7398a",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-2dd8dc1f-4e8e-41f1-9fa4-6c2b96d7398a"
+                    },
+                    {
+                      "id": "f15e9096-53b3-4b4d-8142-ff0732580884",
+                      "name": "No permission to access schedule",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-f15e9096-53b3-4b4d-8142-ff0732580884"
+                    },
+                    {
+                      "id": "6b3e4d26-f4fe-4657-a0d0-a2a26a0fc5cf",
+                      "name": "Schedule not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-6b3e4d26-f4fe-4657-a0d0-a2a26a0fc5cf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-68bbb40c-080b-479a-96c7-c8b27c68bf32"
+                },
+                {
+                  "name": "Update a scheduled agent",
+                  "id": "b2b45782-4597-4ce3-93ee-37a17eef2f6e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"Excepteur_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"proident__\": \"<string>\",\n          \"ina0\": \"<string>\"\n        },\n        \"headers\": {\n          \"do6\": \"<string>\",\n          \"adipisicing_d14\": \"<string>\",\n          \"ut_06\": \"<string>\"\n        }\n      },\n      \"eiusmoda\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"uta8\": \"<string>\"\n        },\n        \"headers\": {\n          \"cupidatat3\": \"<string>\",\n          \"Lorem_ac\": \"<string>\"\n        }\n      },\n      \"in_1\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"sunt_115\": \"<string>\",\n          \"sint_2d7\": \"<string>\",\n          \"voluptate9\": \"<string>\"\n        },\n        \"headers\": {\n          \"incididunt5\": \"<string>\",\n          \"nullad\": \"<string>\",\n          \"exercitation_6\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"oz\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules",
+                        ":scheduleId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8dac732b-b5a8-4c85-938d-a10f1ff040fb",
+                          "key": "scheduleId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the scheduled agent"
+                        }
+                      ]
+                    },
+                    "description": "Update an existing scheduled agent's configuration.\nAll fields except agent_config are required.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "bf05cf05-f14d-4b3b-9fd5-07357f8b42a4",
+                      "name": "Scheduled agent updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"Excepteur_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"proident__\": \"<string>\",\n          \"ina0\": \"<string>\"\n        },\n        \"headers\": {\n          \"do6\": \"<string>\",\n          \"adipisicing_d14\": \"<string>\",\n          \"ut_06\": \"<string>\"\n        }\n      },\n      \"eiusmoda\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"uta8\": \"<string>\"\n        },\n        \"headers\": {\n          \"cupidatat3\": \"<string>\",\n          \"Lorem_ac\": \"<string>\"\n        }\n      },\n      \"in_1\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"sunt_115\": \"<string>\",\n          \"sint_2d7\": \"<string>\",\n          \"voluptate9\": \"<string>\"\n        },\n        \"headers\": {\n          \"incididunt5\": \"<string>\",\n          \"nullad\": \"<string>\",\n          \"exercitation_6\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"oz\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"last_spawn_error\": \"<string>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"officia_62\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"incididunt64\": \"<string>\",\n          \"ad5\": \"<string>\"\n        },\n        \"headers\": {\n          \"dolor_150\": \"<string>\",\n          \"amet86\": \"<string>\",\n          \"ipsum33\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"gemini\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"<uuid>\",\n  \"environment\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"docker_image\": \"<string>\",\n    \"github_repos\": [\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      },\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      }\n    ],\n    \"setup_commands\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"<string>\",\n        \"workload_identity_federation_pool_id\": \"<string>\",\n        \"workload_identity_federation_provider_id\": \"<string>\",\n        \"service_account_email\": \"<string>\"\n      },\n      \"aws\": {\n        \"role_arn\": \"<string>\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"history\": {\n    \"last_ran\": \"<dateTime>\",\n    \"next_run\": \"<dateTime>\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-bf05cf05-f14d-4b3b-9fd5-07357f8b42a4"
+                    },
+                    {
+                      "id": "7b8b56a6-65e4-4631-929c-0bb01daee1e2",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"Excepteur_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"proident__\": \"<string>\",\n          \"ina0\": \"<string>\"\n        },\n        \"headers\": {\n          \"do6\": \"<string>\",\n          \"adipisicing_d14\": \"<string>\",\n          \"ut_06\": \"<string>\"\n        }\n      },\n      \"eiusmoda\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"uta8\": \"<string>\"\n        },\n        \"headers\": {\n          \"cupidatat3\": \"<string>\",\n          \"Lorem_ac\": \"<string>\"\n        }\n      },\n      \"in_1\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"sunt_115\": \"<string>\",\n          \"sint_2d7\": \"<string>\",\n          \"voluptate9\": \"<string>\"\n        },\n        \"headers\": {\n          \"incididunt5\": \"<string>\",\n          \"nullad\": \"<string>\",\n          \"exercitation_6\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"oz\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-7b8b56a6-65e4-4631-929c-0bb01daee1e2"
+                    },
+                    {
+                      "id": "7ff32eb1-13c5-4769-bce0-0f74190497f3",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"Excepteur_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"proident__\": \"<string>\",\n          \"ina0\": \"<string>\"\n        },\n        \"headers\": {\n          \"do6\": \"<string>\",\n          \"adipisicing_d14\": \"<string>\",\n          \"ut_06\": \"<string>\"\n        }\n      },\n      \"eiusmoda\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"uta8\": \"<string>\"\n        },\n        \"headers\": {\n          \"cupidatat3\": \"<string>\",\n          \"Lorem_ac\": \"<string>\"\n        }\n      },\n      \"in_1\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"sunt_115\": \"<string>\",\n          \"sint_2d7\": \"<string>\",\n          \"voluptate9\": \"<string>\"\n        },\n        \"headers\": {\n          \"incididunt5\": \"<string>\",\n          \"nullad\": \"<string>\",\n          \"exercitation_6\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"oz\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-7ff32eb1-13c5-4769-bce0-0f74190497f3"
+                    },
+                    {
+                      "id": "7ebcd926-64f2-4ea3-adbe-608356f9e23a",
+                      "name": "No permission to update schedule",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"Excepteur_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"proident__\": \"<string>\",\n          \"ina0\": \"<string>\"\n        },\n        \"headers\": {\n          \"do6\": \"<string>\",\n          \"adipisicing_d14\": \"<string>\",\n          \"ut_06\": \"<string>\"\n        }\n      },\n      \"eiusmoda\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"uta8\": \"<string>\"\n        },\n        \"headers\": {\n          \"cupidatat3\": \"<string>\",\n          \"Lorem_ac\": \"<string>\"\n        }\n      },\n      \"in_1\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"sunt_115\": \"<string>\",\n          \"sint_2d7\": \"<string>\",\n          \"voluptate9\": \"<string>\"\n        },\n        \"headers\": {\n          \"incididunt5\": \"<string>\",\n          \"nullad\": \"<string>\",\n          \"exercitation_6\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"oz\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-7ebcd926-64f2-4ea3-adbe-608356f9e23a"
+                    },
+                    {
+                      "id": "56a02d5e-661e-42d6-9f49-72e5faa245c2",
+                      "name": "Schedule not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"Excepteur_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"proident__\": \"<string>\",\n          \"ina0\": \"<string>\"\n        },\n        \"headers\": {\n          \"do6\": \"<string>\",\n          \"adipisicing_d14\": \"<string>\",\n          \"ut_06\": \"<string>\"\n        }\n      },\n      \"eiusmoda\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"uta8\": \"<string>\"\n        },\n        \"headers\": {\n          \"cupidatat3\": \"<string>\",\n          \"Lorem_ac\": \"<string>\"\n        }\n      },\n      \"in_1\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"sunt_115\": \"<string>\",\n          \"sint_2d7\": \"<string>\",\n          \"voluptate9\": \"<string>\"\n        },\n        \"headers\": {\n          \"incididunt5\": \"<string>\",\n          \"nullad\": \"<string>\",\n          \"exercitation_6\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"oz\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-56a02d5e-661e-42d6-9f49-72e5faa245c2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-b2b45782-4597-4ce3-93ee-37a17eef2f6e"
+                },
+                {
+                  "name": "Delete a scheduled agent",
+                  "id": "dede374b-8c8a-4c5c-b2b0-13cb206ff0cb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules",
+                        ":scheduleId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b135cf2d-71a0-4a6e-9029-131c9777f7e1",
+                          "key": "scheduleId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier of the scheduled agent"
+                        }
+                      ]
+                    },
+                    "description": "Delete a scheduled agent. This will stop all future scheduled runs.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "7d825bf3-e0af-4812-938e-a13759117d70",
+                      "name": "Scheduled agent deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-7d825bf3-e0af-4812-938e-a13759117d70"
+                    },
+                    {
+                      "id": "63650d8d-ac7f-428e-857e-7144a08774e9",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-63650d8d-ac7f-428e-857e-7144a08774e9"
+                    },
+                    {
+                      "id": "02b188fc-ac0a-4227-8a63-4802d394017f",
+                      "name": "No permission to delete schedule",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-02b188fc-ac0a-4227-8a63-4802d394017f"
+                    },
+                    {
+                      "id": "6564754a-0edc-47cf-a926-426210048726",
+                      "name": "Schedule not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-6564754a-0edc-47cf-a926-426210048726"
+                    },
+                    {
+                      "id": "e6c3fc1d-a7fb-4c12-8cf6-38514cebf0de",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agent/schedules/:scheduleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agent",
+                            "schedules",
+                            ":scheduleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scheduleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:28:57.000Z",
+                      "updatedAt": "2026-07-28T03:28:57.000Z",
+                      "uid": "35240-e6c3fc1d-a7fb-4c12-8cf6-38514cebf0de"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-dede374b-8c8a-4c5c-b2b0-13cb206ff0cb"
+                }
+              ],
+              "id": "8b6235ee-007b-4fb6-8f5f-20a6347ea3b4",
+              "createdAt": "2026-07-28T03:28:57.000Z",
+              "updatedAt": "2026-07-28T03:28:57.000Z",
+              "uid": "35240-8b6235ee-007b-4fb6-8f5f-20a6347ea3b4"
+            },
+            {
+              "name": "Create a scheduled agent",
+              "id": "de77e1ae-08cf-486c-97cd-cc8bde3a234d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"enabled\": true,\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"laborum_5\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"ine17\": \"<string>\",\n          \"enim1\": \"<string>\"\n        },\n        \"headers\": {\n          \"Ut_045\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"codex\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_only\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"team\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/agent/schedules",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agent",
+                    "schedules"
+                  ]
+                },
+                "description": "Create a new scheduled agent that runs on a cron schedule.\nThe agent will be triggered automatically based on the cron expression.\n"
+              },
+              "response": [
+                {
+                  "id": "e01bcb67-1e19-4b39-af33-b026da32c51c",
+                  "name": "Scheduled agent created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"enabled\": true,\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"laborum_5\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"ine17\": \"<string>\",\n          \"enim1\": \"<string>\"\n        },\n        \"headers\": {\n          \"Ut_045\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"codex\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_only\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"team\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"last_spawn_error\": \"<string>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"officia_62\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"incididunt64\": \"<string>\",\n          \"ad5\": \"<string>\"\n        },\n        \"headers\": {\n          \"dolor_150\": \"<string>\",\n          \"amet86\": \"<string>\",\n          \"ipsum33\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"gemini\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"<uuid>\",\n  \"environment\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"docker_image\": \"<string>\",\n    \"github_repos\": [\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      },\n      {\n        \"owner\": \"<string>\",\n        \"repo\": \"<string>\"\n      }\n    ],\n    \"setup_commands\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"<string>\",\n        \"workload_identity_federation_pool_id\": \"<string>\",\n        \"workload_identity_federation_provider_id\": \"<string>\",\n        \"service_account_email\": \"<string>\"\n      },\n      \"aws\": {\n        \"role_arn\": \"<string>\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"photo_url\": \"<uri>\"\n  },\n  \"history\": {\n    \"last_ran\": \"<dateTime>\",\n    \"next_run\": \"<dateTime>\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-e01bcb67-1e19-4b39-af33-b026da32c51c"
+                },
+                {
+                  "id": "d0884b82-f702-40fd-8ac3-927e1d2f3bd3",
+                  "name": "Invalid request (missing required fields, invalid cron expression)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"enabled\": true,\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"laborum_5\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"ine17\": \"<string>\",\n          \"enim1\": \"<string>\"\n        },\n        \"headers\": {\n          \"Ut_045\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"codex\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_only\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"team\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-d0884b82-f702-40fd-8ac3-927e1d2f3bd3"
+                },
+                {
+                  "id": "ba535090-f649-4e63-9957-c862ec751fd3",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"enabled\": true,\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"laborum_5\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"ine17\": \"<string>\",\n          \"enim1\": \"<string>\"\n        },\n        \"headers\": {\n          \"Ut_045\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"codex\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_only\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"team\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-ba535090-f649-4e63-9957-c862ec751fd3"
+                },
+                {
+                  "id": "e1e77516-e366-4dc7-bb2a-febc6f0e98a3",
+                  "name": "No permission or feature not available",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"enabled\": true,\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"laborum_5\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"ine17\": \"<string>\",\n          \"enim1\": \"<string>\"\n        },\n        \"headers\": {\n          \"Ut_045\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"codex\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"VIEWER\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_only\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"read_write\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"team\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-e1e77516-e366-4dc7-bb2a-febc6f0e98a3"
+                }
+              ],
+              "createdAt": "2026-07-28T03:28:57.000Z",
+              "updatedAt": "2026-07-28T03:28:57.000Z",
+              "uid": "35240-de77e1ae-08cf-486c-97cd-cc8bde3a234d"
+            },
+            {
+              "name": "List scheduled agents",
+              "id": "51966291-6234-4eb2-b1d2-0d2a48e82731",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/agent/schedules",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agent",
+                    "schedules"
+                  ]
+                },
+                "description": "Retrieve all scheduled agents accessible to the authenticated user.\nResults are sorted alphabetically by name.\n"
+              },
+              "response": [
+                {
+                  "id": "c32ebe9c-0405-40ec-8eb7-82c880298164",
+                  "name": "List of scheduled agents",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"schedules\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"cron_schedule\": \"<string>\",\n      \"enabled\": \"<boolean>\",\n      \"prompt\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"last_spawn_error\": \"<string>\",\n      \"agent_config\": {\n        \"name\": \"<string>\",\n        \"model_id\": \"<string>\",\n        \"base_prompt\": \"<string>\",\n        \"environment_id\": \"<string>\",\n        \"skill_spec\": \"<string>\",\n        \"skills\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mcp_servers\": {\n          \"cillum_2cf\": {\n            \"warp_id\": \"<string>\",\n            \"command\": \"<string>\",\n            \"args\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"url\": \"<uri>\",\n            \"env\": {\n              \"laborum_9\": \"<string>\"\n            },\n            \"headers\": {\n              \"aliquip_c07\": \"<string>\",\n              \"velite\": \"<string>\",\n              \"non_5d\": \"<string>\"\n            }\n          },\n          \"doc1\": {\n            \"warp_id\": \"<string>\",\n            \"command\": \"<string>\",\n            \"args\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"url\": \"<uri>\",\n            \"env\": {\n              \"ad_6e\": \"<string>\",\n              \"Ut_3\": \"<string>\"\n            },\n            \"headers\": {\n              \"eu_9\": \"<string>\",\n              \"fugiat4a3\": \"<string>\"\n            }\n          }\n        },\n        \"computer_use_enabled\": \"<boolean>\",\n        \"idle_timeout_minutes\": \"<integer>\",\n        \"worker_host\": \"<string>\",\n        \"harness\": {\n          \"type\": \"oz\"\n        },\n        \"harness_auth_secrets\": {\n          \"claude_auth_secret_name\": \"<string>\",\n          \"codex_auth_secret_name\": \"<string>\"\n        },\n        \"session_sharing\": {\n          \"public_access\": \"VIEWER\"\n        },\n        \"memory_stores\": [\n          {\n            \"uid\": \"<string>\",\n            \"access\": \"read_write\",\n            \"instructions\": \"<string>\"\n          },\n          {\n            \"uid\": \"<string>\",\n            \"access\": \"read_only\",\n            \"instructions\": \"<string>\"\n          }\n        ],\n        \"inference_providers\": {\n          \"aws\": {\n            \"disabled\": \"<boolean>\",\n            \"role_arn\": \"<string>\",\n            \"region\": \"<string>\"\n          }\n        }\n      },\n      \"agent_uid\": \"<uuid>\",\n      \"environment\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"docker_image\": \"<string>\",\n        \"github_repos\": [\n          {\n            \"owner\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          {\n            \"owner\": \"<string>\",\n            \"repo\": \"<string>\"\n          }\n        ],\n        \"setup_commands\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"providers\": {\n          \"gcp\": {\n            \"project_number\": \"<string>\",\n            \"workload_identity_federation_pool_id\": \"<string>\",\n            \"workload_identity_federation_provider_id\": \"<string>\",\n            \"service_account_email\": \"<string>\"\n          },\n          \"aws\": {\n            \"role_arn\": \"<string>\"\n          }\n        }\n      },\n      \"created_by\": {\n        \"type\": \"user\",\n        \"uid\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"photo_url\": \"<uri>\"\n      },\n      \"updated_by\": {\n        \"type\": \"user\",\n        \"uid\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"photo_url\": \"<uri>\"\n      },\n      \"history\": {\n        \"last_ran\": \"<dateTime>\",\n        \"next_run\": \"<dateTime>\"\n      },\n      \"scope\": {\n        \"type\": \"User\",\n        \"uid\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"cron_schedule\": \"<string>\",\n      \"enabled\": \"<boolean>\",\n      \"prompt\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"last_spawn_error\": \"<string>\",\n      \"agent_config\": {\n        \"name\": \"<string>\",\n        \"model_id\": \"<string>\",\n        \"base_prompt\": \"<string>\",\n        \"environment_id\": \"<string>\",\n        \"skill_spec\": \"<string>\",\n        \"skills\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mcp_servers\": {\n          \"laborumb\": {\n            \"warp_id\": \"<string>\",\n            \"command\": \"<string>\",\n            \"args\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"url\": \"<uri>\",\n            \"env\": {\n              \"fugiat_d\": \"<string>\"\n            },\n            \"headers\": {\n              \"et_a24\": \"<string>\",\n              \"magna_85\": \"<string>\",\n              \"ea_\": \"<string>\"\n            }\n          },\n          \"est_5\": {\n            \"warp_id\": \"<string>\",\n            \"command\": \"<string>\",\n            \"args\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"url\": \"<uri>\",\n            \"env\": {\n              \"incididunt_4\": \"<string>\"\n            },\n            \"headers\": {\n              \"labore_9\": \"<string>\",\n              \"voluptate_5\": \"<string>\",\n              \"reprehenderit_809\": \"<string>\",\n              \"ad_93\": \"<string>\"\n            }\n          },\n          \"minim222\": {\n            \"warp_id\": \"<string>\",\n            \"command\": \"<string>\",\n            \"args\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"url\": \"<uri>\",\n            \"env\": {\n              \"qui_7a\": \"<string>\",\n              \"in_f6c\": \"<string>\"\n            },\n            \"headers\": {\n              \"magna_0f8\": \"<string>\",\n              \"laborum_8\": \"<string>\"\n            }\n          },\n          \"pariatur0\": {\n            \"warp_id\": \"<string>\",\n            \"command\": \"<string>\",\n            \"args\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"url\": \"<uri>\",\n            \"env\": {\n              \"ex3\": \"<string>\",\n              \"reprehenderit15\": \"<string>\"\n            },\n            \"headers\": {\n              \"ex7e0\": \"<string>\"\n            }\n          }\n        },\n        \"computer_use_enabled\": \"<boolean>\",\n        \"idle_timeout_minutes\": \"<integer>\",\n        \"worker_host\": \"<string>\",\n        \"harness\": {\n          \"type\": \"claude\"\n        },\n        \"harness_auth_secrets\": {\n          \"claude_auth_secret_name\": \"<string>\",\n          \"codex_auth_secret_name\": \"<string>\"\n        },\n        \"session_sharing\": {\n          \"public_access\": \"VIEWER\"\n        },\n        \"memory_stores\": [\n          {\n            \"uid\": \"<string>\",\n            \"access\": \"read_only\",\n            \"instructions\": \"<string>\"\n          },\n          {\n            \"uid\": \"<string>\",\n            \"access\": \"read_write\",\n            \"instructions\": \"<string>\"\n          }\n        ],\n        \"inference_providers\": {\n          \"aws\": {\n            \"disabled\": \"<boolean>\",\n            \"role_arn\": \"<string>\",\n            \"region\": \"<string>\"\n          }\n        }\n      },\n      \"agent_uid\": \"<uuid>\",\n      \"environment\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"docker_image\": \"<string>\",\n        \"github_repos\": [\n          {\n            \"owner\": \"<string>\",\n            \"repo\": \"<string>\"\n          },\n          {\n            \"owner\": \"<string>\",\n            \"repo\": \"<string>\"\n          }\n        ],\n        \"setup_commands\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"providers\": {\n          \"gcp\": {\n            \"project_number\": \"<string>\",\n            \"workload_identity_federation_pool_id\": \"<string>\",\n            \"workload_identity_federation_provider_id\": \"<string>\",\n            \"service_account_email\": \"<string>\"\n          },\n          \"aws\": {\n            \"role_arn\": \"<string>\"\n          }\n        }\n      },\n      \"created_by\": {\n        \"type\": \"service_account\",\n        \"uid\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"photo_url\": \"<uri>\"\n      },\n      \"updated_by\": {\n        \"type\": \"service_account\",\n        \"uid\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"photo_url\": \"<uri>\"\n      },\n      \"history\": {\n        \"last_ran\": \"<dateTime>\",\n        \"next_run\": \"<dateTime>\"\n      },\n      \"scope\": {\n        \"type\": \"User\",\n        \"uid\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-c32ebe9c-0405-40ec-8eb7-82c880298164"
+                },
+                {
+                  "id": "c46be533-1d53-4e9d-afbe-9024bce3ed7e",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-c46be533-1d53-4e9d-afbe-9024bce3ed7e"
+                },
+                {
+                  "id": "f64aa4c0-5a58-4148-a5d8-6d6936de0bc5",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agent/schedules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agent",
+                        "schedules"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error\": \"<string>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"retryable\": \"<boolean>\",\n  \"trace_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:28:57.000Z",
+                  "updatedAt": "2026-07-28T03:28:57.000Z",
+                  "uid": "35240-f64aa4c0-5a58-4148-a5d8-6d6936de0bc5"
+                }
+              ],
+              "createdAt": "2026-07-28T03:28:57.000Z",
+              "updatedAt": "2026-07-28T03:28:57.000Z",
+              "uid": "35240-51966291-6234-4eb2-b1d2-0d2a48e82731"
+            }
+          ],
+          "id": "1ed599ee-d8b7-4141-ae95-319ece2475d2",
+          "createdAt": "2026-07-28T03:28:57.000Z",
+          "updatedAt": "2026-07-28T03:28:57.000Z",
+          "uid": "35240-1ed599ee-d8b7-4141-ae95-319ece2475d2"
+        }
+      ],
+      "id": "ce51db15-6360-4c81-aea6-642e0597ec81",
+      "createdAt": "2026-07-28T03:28:57.000Z",
+      "updatedAt": "2026-07-28T03:28:57.000Z",
+      "uid": "35240-ce51db15-6360-4c81-aea6-642e0597ec81"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://app.warp.dev/api/v1"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "provider": "warp",
+  "sources": [
+    "warp-agent-api-openapi.yml",
+    "warp-harness-support-api-openapi.yml",
+    "warp-schedules-api-openapi.yml"
+  ],
+  "outputs": [
+    "warp-agent-api-openapi.yml",
+    "warp-harness-support-api-openapi.yml",
+    "warp-schedules-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
