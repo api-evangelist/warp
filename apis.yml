@@ -178,7 +178,7 @@ common:
     url: https://www.warp.dev/pricing
   - type: StatusPage
     url: https://status.warp.dev/
-  - type: MCP
+  - type: Documentation
     url: https://docs.warp.dev/agent-platform/capabilities/mcp/
   - type: Plans
     url: plans/warp-plans-pricing.yml
