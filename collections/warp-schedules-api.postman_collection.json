@@ -1,0 +1,2128 @@
+{
+  "item": [
+    {
+      "id": "e0cc6230-ebc6-4ebc-8d0a-b03c30d3f14b",
+      "name": "schedules",
+      "description": {
+        "content": "Operations for creating and managing scheduled agents",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99390e6f-3d09-472c-a817-3b528dbb1c5b",
+          "name": "Create a scheduled agent",
+          "request": {
+            "name": "Create a scheduled agent",
+            "description": {
+              "content": "Create a new scheduled agent that runs on a cron schedule.\nThe agent will be triggered automatically based on the cron expression.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agent",
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"enabled\": true,\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"key_1\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      },\n      \"key_2\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"team\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5fa776e3-3095-46cf-a847-986c0dfa6839",
+              "name": "Scheduled agent created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Daily Code Review\",\n  \"cron_schedule\": \"0 9 * * *\",\n  \"prompt\": \"Review open pull requests and provide feedback\",\n  \"enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"cron_schedule\": \"string\",\n  \"enabled\": true,\n  \"prompt\": \"string\",\n  \"created_at\": \"1960-04-21T04:07:48.182Z\",\n  \"updated_at\": \"1977-06-27T22:18:22.897Z\",\n  \"last_spawn_error\": \"string\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"23ce93ff-688b-fa5a-ec30-7e840ea71800\",\n  \"environment\": {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"docker_image\": \"string\",\n    \"github_repos\": [\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      },\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      }\n    ],\n    \"setup_commands\": [\n      \"string\",\n      \"string\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"string\",\n        \"workload_identity_federation_pool_id\": \"string\",\n        \"workload_identity_federation_provider_id\": \"string\",\n        \"service_account_email\": \"string\"\n      },\n      \"aws\": {\n        \"role_arn\": \"string\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"user\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"https://sVCpbCObVwXoK.ihzErK8QYg+-1\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"http://WecZKzCn.vfjHXbqzJnVFyBHlKqrDcArFN\"\n  },\n  \"history\": {\n    \"last_ran\": \"1967-04-20T13:02:09.022Z\",\n    \"next_run\": \"2005-09-15T14:49:48.814Z\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c9e8d2a-14b7-4b08-8adf-ea589c1bf6de",
+              "name": "Invalid request (missing required fields, invalid cron expression)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Daily Code Review\",\n  \"cron_schedule\": \"0 9 * * *\",\n  \"prompt\": \"Review open pull requests and provide feedback\",\n  \"enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d651e88-fdfc-48c6-8049-f07b410ca097",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Daily Code Review\",\n  \"cron_schedule\": \"0 9 * * *\",\n  \"prompt\": \"Review open pull requests and provide feedback\",\n  \"enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "014a67c2-38d5-476f-8d6c-f6cb076264ad",
+              "name": "No permission or feature not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Daily Code Review\",\n  \"cron_schedule\": \"0 9 * * *\",\n  \"prompt\": \"Review open pull requests and provide feedback\",\n  \"enabled\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0a0b1ce-9772-4f5a-9830-aabe1d3cd24f",
+          "name": "List scheduled agents",
+          "request": {
+            "name": "List scheduled agents",
+            "description": {
+              "content": "Retrieve all scheduled agents accessible to the authenticated user.\nResults are sorted alphabetically by name.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agent",
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d3236a8e-316b-4481-a650-cfcd1af76c17",
+              "name": "List of scheduled agents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"schedules\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"cron_schedule\": \"string\",\n      \"enabled\": false,\n      \"prompt\": \"string\",\n      \"created_at\": \"1971-11-03T16:27:39.877Z\",\n      \"updated_at\": \"1968-07-22T22:02:58.784Z\",\n      \"last_spawn_error\": \"string\",\n      \"agent_config\": {\n        \"name\": \"<string>\",\n        \"model_id\": \"<string>\",\n        \"base_prompt\": \"<string>\",\n        \"environment_id\": \"<string>\",\n        \"skill_spec\": \"<string>\",\n        \"skills\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mcp_servers\": {\n          \"key_0\": {\n            \"warp_id\": \"<string>\",\n            \"command\": \"<string>\",\n            \"args\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"url\": \"<uri>\",\n            \"env\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"headers\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        \"computer_use_enabled\": \"<boolean>\",\n        \"idle_timeout_minutes\": \"<integer>\",\n        \"worker_host\": \"<string>\",\n        \"harness\": {\n          \"type\": \"<string>\"\n        },\n        \"harness_auth_secrets\": {\n          \"claude_auth_secret_name\": \"<string>\",\n          \"codex_auth_secret_name\": \"<string>\"\n        },\n        \"session_sharing\": {\n          \"public_access\": \"<string>\"\n        },\n        \"memory_stores\": [\n          {\n            \"uid\": \"<string>\",\n            \"access\": \"<string>\",\n            \"instructions\": \"<string>\"\n          },\n          {\n            \"uid\": \"<string>\",\n            \"access\": \"<string>\",\n            \"instructions\": \"<string>\"\n          }\n        ],\n        \"inference_providers\": {\n          \"aws\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"agent_uid\": \"59a019e6-6383-df56-7585-1b832d7794f3\",\n      \"environment\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"docker_image\": \"string\",\n        \"github_repos\": [\n          {\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"repo\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"repo\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"setup_commands\": [\n          \"string\",\n          \"string\"\n        ],\n        \"providers\": {\n          \"gcp\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"aws\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"created_by\": {\n        \"type\": \"service_account\",\n        \"uid\": \"string\",\n        \"display_name\": \"string\",\n        \"email\": \"string\",\n        \"photo_url\": \"http://JWqddwDaCHrvGgpbdPzDc.wwxbHuJ8gwzwg2SOqh5GXWj,\"\n      },\n      \"updated_by\": {\n        \"type\": \"service_account\",\n        \"uid\": \"string\",\n        \"display_name\": \"string\",\n        \"email\": \"string\",\n        \"photo_url\": \"http://sRN.vdogckhXyAaV3HRX4iTGU-bUATBCDzwT3qutq.gz3wy\"\n      },\n      \"history\": {\n        \"last_ran\": \"1993-02-18T00:25:29.936Z\",\n        \"next_run\": \"1989-10-12T14:18:27.543Z\"\n      },\n      \"scope\": {\n        \"type\": \"User\",\n        \"uid\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"cron_schedule\": \"string\",\n      \"enabled\": false,\n      \"prompt\": \"string\",\n      \"created_at\": \"2018-10-13T08:59:43.321Z\",\n      \"updated_at\": \"1986-02-13T04:22:32.271Z\",\n      \"last_spawn_error\": \"string\",\n      \"agent_config\": {\n        \"name\": \"<string>\",\n        \"model_id\": \"<string>\",\n        \"base_prompt\": \"<string>\",\n        \"environment_id\": \"<string>\",\n        \"skill_spec\": \"<string>\",\n        \"skills\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mcp_servers\": {\n          \"key_0\": {\n            \"warp_id\": \"<string>\",\n            \"command\": \"<string>\",\n            \"args\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"url\": \"<uri>\",\n            \"env\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"headers\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"key_1\": {\n            \"warp_id\": \"<string>\",\n            \"command\": \"<string>\",\n            \"args\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"url\": \"<uri>\",\n            \"env\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"headers\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        \"computer_use_enabled\": \"<boolean>\",\n        \"idle_timeout_minutes\": \"<integer>\",\n        \"worker_host\": \"<string>\",\n        \"harness\": {\n          \"type\": \"<string>\"\n        },\n        \"harness_auth_secrets\": {\n          \"claude_auth_secret_name\": \"<string>\",\n          \"codex_auth_secret_name\": \"<string>\"\n        },\n        \"session_sharing\": {\n          \"public_access\": \"<string>\"\n        },\n        \"memory_stores\": [\n          {\n            \"uid\": \"<string>\",\n            \"access\": \"<string>\",\n            \"instructions\": \"<string>\"\n          },\n          {\n            \"uid\": \"<string>\",\n            \"access\": \"<string>\",\n            \"instructions\": \"<string>\"\n          }\n        ],\n        \"inference_providers\": {\n          \"aws\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"agent_uid\": \"10bc463b-c29c-9bbd-b5ff-abf50e70e8a7\",\n      \"environment\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"docker_image\": \"string\",\n        \"github_repos\": [\n          {\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"repo\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"repo\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"setup_commands\": [\n          \"string\",\n          \"string\"\n        ],\n        \"providers\": {\n          \"gcp\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"aws\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"created_by\": {\n        \"type\": \"service_account\",\n        \"uid\": \"string\",\n        \"display_name\": \"string\",\n        \"email\": \"string\",\n        \"photo_url\": \"https://PactjIjHypYooLhhIVTcnKRXlr.snoiRRwjET-VhSGEx0Nr7TvbvtiJWDJE+mzWn-NxcEEjs0jChmfajgwZ\"\n      },\n      \"updated_by\": {\n        \"type\": \"service_account\",\n        \"uid\": \"string\",\n        \"display_name\": \"string\",\n        \"email\": \"string\",\n        \"photo_url\": \"http://VVkLVxgPAynOONokifNIacYSptsEAj.nrhqkTbyDIsL\"\n      },\n      \"history\": {\n        \"last_ran\": \"1986-08-11T03:38:44.928Z\",\n        \"next_run\": \"1992-02-04T16:44:03.676Z\"\n      },\n      \"scope\": {\n        \"type\": \"User\",\n        \"uid\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "971059be-81dd-4f0f-a9ee-c9b440001cee",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42ecd47d-e0b5-4acd-a3d8-c337a9caccfb",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e85a3408-b6dc-4c01-aff5-7f10f53fa6e8",
+          "name": "Get scheduled agent details",
+          "request": {
+            "name": "Get scheduled agent details",
+            "description": {
+              "content": "Retrieve detailed information about a specific scheduled agent,\nincluding its configuration, history, and next scheduled run time.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agent",
+                "schedules",
+                ":scheduleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduleId",
+                  "description": "(Required) The unique identifier of the scheduled agent"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4458cb41-e5dd-49a1-993b-bb526c3e06bc",
+              "name": "Scheduled agent details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"cron_schedule\": \"string\",\n  \"enabled\": true,\n  \"prompt\": \"string\",\n  \"created_at\": \"1998-05-07T05:22:29.429Z\",\n  \"updated_at\": \"2007-07-02T23:01:42.230Z\",\n  \"last_spawn_error\": \"string\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"cac04247-9ad3-4715-efe4-dcee14a18d4b\",\n  \"environment\": {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"docker_image\": \"string\",\n    \"github_repos\": [\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      },\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      }\n    ],\n    \"setup_commands\": [\n      \"string\",\n      \"string\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"string\",\n        \"workload_identity_federation_pool_id\": \"string\",\n        \"workload_identity_federation_provider_id\": \"string\",\n        \"service_account_email\": \"string\"\n      },\n      \"aws\": {\n        \"role_arn\": \"string\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"user\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"http://PhfgZiSGXlrCZMQsrAziplZjZQ.qyxordN9IlhFNQ7xTUrD3jnW62YxGqA1B7YjnOCS+AuP1YMmlNrpm-c4tvaaCckUx9d0\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"http://blcGsOoU.rgkSoWfabHrUCcKKlgusCXvqj,vpHD6Z.AU8H86JxkLW4OMltajpQ\"\n  },\n  \"history\": {\n    \"last_ran\": \"2022-08-10T14:00:48.480Z\",\n    \"next_run\": \"1962-01-22T02:21:06.289Z\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d30acfe-64b7-4fa7-a5f0-65610d8deb5a",
+              "name": "Missing schedule ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89624cf5-0727-4250-a8a4-dbc0f015970a",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53b7bb69-169c-4697-a6bc-920d18730409",
+              "name": "No permission to access schedule",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9decfadd-c18d-46a0-92f8-c25b02443343",
+              "name": "Schedule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d55cab7-54ab-4a8f-ab8e-8ceb51d9c84f",
+          "name": "Update a scheduled agent",
+          "request": {
+            "name": "Update a scheduled agent",
+            "description": {
+              "content": "Update an existing scheduled agent's configuration.\nAll fields except agent_config are required.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agent",
+                "schedules",
+                ":scheduleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduleId",
+                  "description": "(Required) The unique identifier of the scheduled agent"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "558e5360-8d17-4eab-9a1f-cb70ba64e421",
+              "name": "Scheduled agent updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"cron_schedule\": \"string\",\n  \"enabled\": true,\n  \"prompt\": \"string\",\n  \"created_at\": \"1998-05-07T05:22:29.429Z\",\n  \"updated_at\": \"2007-07-02T23:01:42.230Z\",\n  \"last_spawn_error\": \"string\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"cac04247-9ad3-4715-efe4-dcee14a18d4b\",\n  \"environment\": {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"docker_image\": \"string\",\n    \"github_repos\": [\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      },\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      }\n    ],\n    \"setup_commands\": [\n      \"string\",\n      \"string\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"string\",\n        \"workload_identity_federation_pool_id\": \"string\",\n        \"workload_identity_federation_provider_id\": \"string\",\n        \"service_account_email\": \"string\"\n      },\n      \"aws\": {\n        \"role_arn\": \"string\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"user\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"http://PhfgZiSGXlrCZMQsrAziplZjZQ.qyxordN9IlhFNQ7xTUrD3jnW62YxGqA1B7YjnOCS+AuP1YMmlNrpm-c4tvaaCckUx9d0\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"http://blcGsOoU.rgkSoWfabHrUCcKKlgusCXvqj,vpHD6Z.AU8H86JxkLW4OMltajpQ\"\n  },\n  \"history\": {\n    \"last_ran\": \"2022-08-10T14:00:48.480Z\",\n    \"next_run\": \"1962-01-22T02:21:06.289Z\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15e0ad41-ca1f-401f-9100-a3eddfda9f87",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca071ee2-74f1-4475-b304-0264e63288b3",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7121ef43-f5aa-466b-854e-0692e5c530bf",
+              "name": "No permission to update schedule",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "962585b0-53ec-4c6c-a175-3d6c875fab9a",
+              "name": "Schedule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cron_schedule\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"prompt\": \"<string>\",\n  \"mode\": \"normal\",\n  \"agent_uid\": \"<uuid>\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2eb41bd3-0002-4807-97fb-074a660cdd16",
+          "name": "Delete a scheduled agent",
+          "request": {
+            "name": "Delete a scheduled agent",
+            "description": {
+              "content": "Delete a scheduled agent. This will stop all future scheduled runs.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agent",
+                "schedules",
+                ":scheduleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduleId",
+                  "description": "(Required) The unique identifier of the scheduled agent"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "812bb859-bbab-40c6-9326-a8b6930c473a",
+              "name": "Scheduled agent deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a5ca71d-3bca-474d-b75d-33d108d6fb66",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8aa35b1b-55d0-4ec2-b74a-2a08aa411707",
+              "name": "No permission to delete schedule",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23566720-490a-4aa0-821c-00f4d5f70dd3",
+              "name": "Schedule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82c0b56c-908e-45cf-b4a9-cdebc99e35df",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf93d790-4789-43f4-bd87-2d8d11fe785b",
+          "name": "Pause a scheduled agent",
+          "request": {
+            "name": "Pause a scheduled agent",
+            "description": {
+              "content": "Pause a scheduled agent. The agent will not run until resumed.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agent",
+                "schedules",
+                ":scheduleId",
+                "pause"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduleId",
+                  "description": "(Required) The unique identifier of the scheduled agent"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "058323fa-bdee-4108-9796-96638a4824b8",
+              "name": "Scheduled agent paused successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"cron_schedule\": \"string\",\n  \"enabled\": true,\n  \"prompt\": \"string\",\n  \"created_at\": \"1998-05-07T05:22:29.429Z\",\n  \"updated_at\": \"2007-07-02T23:01:42.230Z\",\n  \"last_spawn_error\": \"string\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"cac04247-9ad3-4715-efe4-dcee14a18d4b\",\n  \"environment\": {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"docker_image\": \"string\",\n    \"github_repos\": [\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      },\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      }\n    ],\n    \"setup_commands\": [\n      \"string\",\n      \"string\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"string\",\n        \"workload_identity_federation_pool_id\": \"string\",\n        \"workload_identity_federation_provider_id\": \"string\",\n        \"service_account_email\": \"string\"\n      },\n      \"aws\": {\n        \"role_arn\": \"string\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"user\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"http://PhfgZiSGXlrCZMQsrAziplZjZQ.qyxordN9IlhFNQ7xTUrD3jnW62YxGqA1B7YjnOCS+AuP1YMmlNrpm-c4tvaaCckUx9d0\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"http://blcGsOoU.rgkSoWfabHrUCcKKlgusCXvqj,vpHD6Z.AU8H86JxkLW4OMltajpQ\"\n  },\n  \"history\": {\n    \"last_ran\": \"2022-08-10T14:00:48.480Z\",\n    \"next_run\": \"1962-01-22T02:21:06.289Z\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bfcb1aa-bc32-4381-8ca7-4513cef456e0",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4c579d2-e873-409b-9e43-08e3640847ce",
+              "name": "No permission to pause schedule",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31f7cdc5-e553-447f-8360-72cc04614697",
+              "name": "Schedule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c8b0462-5d97-4142-bf9d-0224b69ef5a8",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a828909a-6ef8-46b8-b520-fa0041f110d2",
+          "name": "Resume a scheduled agent",
+          "request": {
+            "name": "Resume a scheduled agent",
+            "description": {
+              "content": "Resume a paused scheduled agent. The agent will start running\naccording to its cron schedule.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agent",
+                "schedules",
+                ":scheduleId",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduleId",
+                  "description": "(Required) The unique identifier of the scheduled agent"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eddfb7df-4bf1-4dfe-8ef8-284e784e6d80",
+              "name": "Scheduled agent resumed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"cron_schedule\": \"string\",\n  \"enabled\": true,\n  \"prompt\": \"string\",\n  \"created_at\": \"1998-05-07T05:22:29.429Z\",\n  \"updated_at\": \"2007-07-02T23:01:42.230Z\",\n  \"last_spawn_error\": \"string\",\n  \"agent_config\": {\n    \"name\": \"<string>\",\n    \"model_id\": \"<string>\",\n    \"base_prompt\": \"<string>\",\n    \"environment_id\": \"<string>\",\n    \"skill_spec\": \"<string>\",\n    \"skills\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mcp_servers\": {\n      \"key_0\": {\n        \"warp_id\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<uri>\",\n        \"env\": {\n          \"key_0\": \"<string>\"\n        },\n        \"headers\": {\n          \"key_0\": \"<string>\"\n        }\n      }\n    },\n    \"computer_use_enabled\": \"<boolean>\",\n    \"idle_timeout_minutes\": \"<integer>\",\n    \"worker_host\": \"<string>\",\n    \"harness\": {\n      \"type\": \"<string>\"\n    },\n    \"harness_auth_secrets\": {\n      \"claude_auth_secret_name\": \"<string>\",\n      \"codex_auth_secret_name\": \"<string>\"\n    },\n    \"session_sharing\": {\n      \"public_access\": \"<string>\"\n    },\n    \"memory_stores\": [\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      },\n      {\n        \"uid\": \"<string>\",\n        \"access\": \"<string>\",\n        \"instructions\": \"<string>\"\n      }\n    ],\n    \"inference_providers\": {\n      \"aws\": {\n        \"disabled\": \"<boolean>\",\n        \"role_arn\": \"<string>\",\n        \"region\": \"<string>\"\n      }\n    }\n  },\n  \"agent_uid\": \"cac04247-9ad3-4715-efe4-dcee14a18d4b\",\n  \"environment\": {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"docker_image\": \"string\",\n    \"github_repos\": [\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      },\n      {\n        \"owner\": \"string\",\n        \"repo\": \"string\"\n      }\n    ],\n    \"setup_commands\": [\n      \"string\",\n      \"string\"\n    ],\n    \"providers\": {\n      \"gcp\": {\n        \"project_number\": \"string\",\n        \"workload_identity_federation_pool_id\": \"string\",\n        \"workload_identity_federation_provider_id\": \"string\",\n        \"service_account_email\": \"string\"\n      },\n      \"aws\": {\n        \"role_arn\": \"string\"\n      }\n    }\n  },\n  \"created_by\": {\n    \"type\": \"user\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"http://PhfgZiSGXlrCZMQsrAziplZjZQ.qyxordN9IlhFNQ7xTUrD3jnW62YxGqA1B7YjnOCS+AuP1YMmlNrpm-c4tvaaCckUx9d0\"\n  },\n  \"updated_by\": {\n    \"type\": \"service_account\",\n    \"uid\": \"string\",\n    \"display_name\": \"string\",\n    \"email\": \"string\",\n    \"photo_url\": \"http://blcGsOoU.rgkSoWfabHrUCcKKlgusCXvqj,vpHD6Z.AU8H86JxkLW4OMltajpQ\"\n  },\n  \"history\": {\n    \"last_ran\": \"2022-08-10T14:00:48.480Z\",\n    \"next_run\": \"1962-01-22T02:21:06.289Z\"\n  },\n  \"scope\": {\n    \"type\": \"Team\",\n    \"uid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdf2ef93-7db1-4f96-9be7-2cb912dd73a7",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e49cdc60-9f3f-4325-8364-243a155e38f9",
+              "name": "No permission to resume schedule",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7cd12d2-cb9d-438f-b612-54daaa52175d",
+              "name": "Schedule not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f036adc4-2e60-4187-a5dd-447d07a8e60d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agent",
+                    "schedules",
+                    ":scheduleId",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) The unique identifier of the scheduled agent"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://eWlmsPscv.yyDHNjlq3TKO5vzUXm+nQww1E9loFzmKMKhn3pRbZAedK9SWqXw0DAiPz8WD+anWvwk\",\n  \"title\": \"string\",\n  \"status\": 5299,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.warp.dev/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b2c61a54-379d-48d2-a70f-7005cf695d41",
+    "name": "Oz agent schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for creating, managing, and querying Oz cloud agent runs.\n\nThese endpoints allow users to programmatically spawn agents, list runs, \nand retrieve detailed run information.\n\n\nContact Support:\n Name: Warp Support\n Email: support@warp.dev",
+      "type": "text/plain"
+    }
+  }
+}

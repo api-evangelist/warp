@@ -1,0 +1,588 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oz agent API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "agent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent",
+            "params": [
+              {
+                "name": "repo",
+                "value": "",
+                "type": "query",
+                "description": "Optional repository specification to list agents from (format: \"owner/repo\").\nIf not provided, lists agents from all accessible environments.\n"
+              },
+              {
+                "name": "refresh",
+                "value": "",
+                "type": "query",
+                "description": "When true, clears the agent list cache before fetching.\nUse this to force a refresh of the available agents.\n"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for the returned agents.\n- \"name\": Sort alphabetically by name (default)\n- \"last_run\": Sort by most recently used\n"
+              },
+              {
+                "name": "include_malformed_skills",
+                "value": "",
+                "type": "query",
+                "description": "When true, includes skills whose SKILL.md file exists but is\nmalformed. These variants will have a non-empty `error` field\ndescribing the parse failure. Defaults to false.\n"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a list of available agents (skills) that can be used to run tasks.\nAgents are discovered from environments or a specific repository.\n"
+        },
+        {
+          "info": {
+            "name": "List connected self-hosted workers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/connected-self-hosted-workers",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve currently connected self-hosted workers for the authenticated principal's team.\nWorker presence is derived from worker websocket heartbeats and may be briefly stale.\n"
+        },
+        {
+          "info": {
+            "name": "Get run transcript",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/runs/:runId/transcript",
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the run"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the raw conversation transcript for an agent run.\nReturns a 302 redirect to a time-limited download URL for the transcript.\n"
+        },
+        {
+          "info": {
+            "name": "Run an agent task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.warp.dev/api/v1/agent/run",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Spawn a cloud agent with a prompt and optional configuration.\nThe agent will be queued for execution and assigned a unique run ID.\n"
+        },
+        {
+          "info": {
+            "name": "List agent runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/runs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of runs to return"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor from previous response"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort field for results.\n- `updated_at`: Sort by last update timestamp (default)\n- `created_at`: Sort by creation timestamp\n- `title`: Sort alphabetically by run title\n- `agent`: Sort alphabetically by skill. Runs without a skill are grouped last.\n"
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter by run state. Can be specified multiple times to match any of the given states.\n"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by agent config name"
+              },
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by model ID"
+              },
+              {
+                "name": "creator",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creator UID (user or service account)"
+              },
+              {
+                "name": "executor",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the user or agent that executed the run. This will often be the\nsame as the creator, but not always: users may delegate tasks to agents.\n"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Filter by run source type"
+              },
+              {
+                "name": "execution_location",
+                "value": "",
+                "type": "query",
+                "description": "Filter by where the run executed"
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter runs created after this timestamp (RFC3339 format)"
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query",
+                "description": "Filter runs created before this timestamp (RFC3339 format)"
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter runs updated after this timestamp (RFC3339 format)"
+              },
+              {
+                "name": "environment_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter runs by environment ID"
+              },
+              {
+                "name": "skill",
+                "value": "",
+                "type": "query",
+                "description": "Filter runs by skill spec (e.g., \"owner/repo:path/to/SKILL.md\").\nAlias for skill_spec.\n"
+              },
+              {
+                "name": "skill_spec",
+                "value": "",
+                "type": "query",
+                "description": "Filter runs by skill spec (e.g., \"owner/repo:path/to/SKILL.md\")"
+              },
+              {
+                "name": "schedule_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter runs by the scheduled agent ID that created them"
+              },
+              {
+                "name": "ancestor_run_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter runs by ancestor run ID. The referenced run must exist and be accessible to the caller."
+              },
+              {
+                "name": "artifact_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter runs by artifact type"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Fuzzy search query across run title, prompt, and skill_spec"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a paginated list of agent runs with optional filtering.\nResults default to `sort_by=updated_at` and `sort_order=desc`.\n"
+        },
+        {
+          "info": {
+            "name": "Run a cloud agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.warp.dev/api/v1/agent/runs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Spawn a cloud agent with a prompt and optional configuration.\nThe agent will be queued for execution and assigned a unique run ID.\n"
+        },
+        {
+          "info": {
+            "name": "Get run details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/runs/:runId",
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the run"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve detailed information about a specific agent run, \nincluding the full prompt, session link, and resolved configuration.\n"
+        },
+        {
+          "info": {
+            "name": "Get run timeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/runs/:runId/timeline",
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the run"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve chronological setup and lifecycle timeline events for an agent run.\n"
+        },
+        {
+          "info": {
+            "name": "Get normalized run conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/runs/:runId/conversation",
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the run"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a run's conversation as a normalized sequence of messages and\nnested steps.\nThe response groups text, tool activity, and event content into\nstructured blocks.\n"
+        },
+        {
+          "info": {
+            "name": "Cancel a run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.warp.dev/api/v1/agent/runs/:runId/cancel",
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the run to cancel"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel an agent run that is currently queued or in progress.\nOnce cancelled, the run will transition to a cancelled state.\n\nNot all runs can be cancelled. Runs that are in a terminal state\n(SUCCEEDED, FAILED, ERROR, BLOCKED, CANCELLED) return 400. Runs in\nPENDING state return 409 (retry after a moment). Self-hosted, local,\nand GitHub Action runs return 422.\n"
+        },
+        {
+          "info": {
+            "name": "Submit a follow-up message for a run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.warp.dev/api/v1/agent/runs/:runId/followups",
+            "params": [
+              {
+                "name": "runId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the run"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Send a follow-up message to an existing run. The server transparently\nroutes the message based on the current state of the run (still\nqueued, actively running, or ended). A 200 response means the follow-up\nwas accepted; updated run state can be observed via\n`GET /agent/runs/{runId}`.\n"
+        },
+        {
+          "info": {
+            "name": "Get normalized conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/conversations/:conversation_id",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the conversation"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a conversation directly by conversation ID in Warp's\nnormalized task/message format.\n"
+        },
+        {
+          "info": {
+            "name": "List environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/environments",
+            "params": [
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for the returned environments.\n- `name`: alphabetical by environment name\n- `last_updated`: most recently updated first (default)\n"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve cloud environments accessible to the authenticated principal.\nReturns environments the caller owns, has been granted guest access to,\nor has accessed via link sharing.\n"
+        },
+        {
+          "info": {
+            "name": "List available models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/models",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the list of LLM models available to the authenticated user for\nagent runs. The response includes which model is the default, as well as\nper-model metadata such as provider, cost, and whether the model is\ncurrently disabled (and why).\n"
+        },
+        {
+          "info": {
+            "name": "Get artifact details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/artifacts/:artifactUid",
+            "params": [
+              {
+                "name": "artifactUid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier (UUID) of the artifact"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve an artifact by its UUID. For downloadable file-like artifacts,\nreturns a time-limited signed download URL. For plan artifacts, returns\nthe current plan content inline.\n"
+        },
+        {
+          "info": {
+            "name": "List agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/identities",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all agents for the caller's team. Each agent includes\nan `available` flag indicating whether it is within the team's plan limit\nand may be used for runs.\n"
+        },
+        {
+          "info": {
+            "name": "Create an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.warp.dev/api/v1/agent/identities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new agent for the caller's team.\nAgents can be used as the execution principal for team-owned runs.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/identities/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the agent"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a single agent by its unique identifier.\nThe response includes an `available` flag indicating whether the agent\nis within the team's plan limit and may be used for runs.\n"
+        },
+        {
+          "info": {
+            "name": "Update an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.warp.dev/api/v1/agent/identities/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the agent"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an existing agent.\n"
+        },
+        {
+          "info": {
+            "name": "Delete an agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.warp.dev/api/v1/agent/identities/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the agent"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an agent. All API keys associated with the\nagent are deleted atomically.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

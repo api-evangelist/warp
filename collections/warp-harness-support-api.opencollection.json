@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oz agent harness-support API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "harness-support",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download the raw third-party harness transcript",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/harness-support/transcript",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Redirects to a signed download URL for the raw third-party harness transcript\n(e.g. `claude_code.json`) of the current task's conversation. Only supported\nfor conversations produced by non-Oz harnesses; Oz conversations 400.\n\nThis may only be called from within a cloud agent execution environment whose\ntask already has an associated conversation (e.g. on a resumed run).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

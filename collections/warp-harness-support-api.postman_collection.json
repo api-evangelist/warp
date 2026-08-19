@@ -1,0 +1,336 @@
+{
+  "item": [
+    {
+      "id": "ac94c674-36e2-4af6-b1e6-17fff406baf8",
+      "name": "harness-support",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0b6b9c35-6c83-4bff-bebb-52c3380d379d",
+          "name": "Download the raw third-party harness transcript",
+          "request": {
+            "name": "Download the raw third-party harness transcript",
+            "description": {
+              "content": "Redirects to a signed download URL for the raw third-party harness transcript\n(e.g. `claude_code.json`) of the current task's conversation. Only supported\nfor conversations produced by non-Oz harnesses; Oz conversations 400.\n\nThis may only be called from within a cloud agent execution environment whose\ntask already has an associated conversation (e.g. on a resumed run).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "harness-support",
+                "transcript"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "38222724-b8ab-49f1-a19d-17c2b07dcadd",
+              "name": "Redirect to a signed download URL for the transcript",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "harness-support",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Temporary Redirect (since HTTP/1.1)",
+              "code": 307,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16495d16-7e20-42ec-9386-a8f8b605dcc0",
+              "name": "Task has no conversation, or conversation format does not support transcript downloads",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "harness-support",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://EMnZQ.enkmPxrUct94Q6vf8gPJppndJxt+Zfv-thkWJOLwednW\",\n  \"title\": \"string\",\n  \"status\": 5043,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e69c1c0-f6ac-4549-9415-d2c9edd098d9",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "harness-support",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://EMnZQ.enkmPxrUct94Q6vf8gPJppndJxt+Zfv-thkWJOLwednW\",\n  \"title\": \"string\",\n  \"status\": 5043,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64fa26e3-822f-4cba-b153-2eca963432ad",
+              "name": "No permission to access the conversation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "harness-support",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://EMnZQ.enkmPxrUct94Q6vf8gPJppndJxt+Zfv-thkWJOLwednW\",\n  \"title\": \"string\",\n  \"status\": 5043,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e73358ec-dc15-4cd8-95ff-e27812ba266a",
+              "name": "Conversation or transcript not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "harness-support",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://EMnZQ.enkmPxrUct94Q6vf8gPJppndJxt+Zfv-thkWJOLwednW\",\n  \"title\": \"string\",\n  \"status\": 5043,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8ddac1d-886d-458a-861b-9ed39f0d1170",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "harness-support",
+                    "transcript"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://EMnZQ.enkmPxrUct94Q6vf8gPJppndJxt+Zfv-thkWJOLwednW\",\n  \"title\": \"string\",\n  \"status\": 5043,\n  \"error\": \"string\",\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"retryable\": true,\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.warp.dev/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7ba44857-af6d-4dc5-99e6-0259fac23c45",
+    "name": "Oz agent harness-support API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for creating, managing, and querying Oz cloud agent runs.\n\nThese endpoints allow users to programmatically spawn agents, list runs, \nand retrieve detailed run information.\n\n\nContact Support:\n Name: Warp Support\n Email: support@warp.dev",
+      "type": "text/plain"
+    }
+  }
+}

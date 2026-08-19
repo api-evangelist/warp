@@ -1,0 +1,171 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oz agent schedules API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scheduled agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/schedules",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve all scheduled agents accessible to the authenticated user.\nResults are sorted alphabetically by name.\n"
+        },
+        {
+          "info": {
+            "name": "Create a scheduled agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.warp.dev/api/v1/agent/schedules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new scheduled agent that runs on a cron schedule.\nThe agent will be triggered automatically based on the cron expression.\n"
+        },
+        {
+          "info": {
+            "name": "Get scheduled agent details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.warp.dev/api/v1/agent/schedules/:scheduleId",
+            "params": [
+              {
+                "name": "scheduleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the scheduled agent"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve detailed information about a specific scheduled agent,\nincluding its configuration, history, and next scheduled run time.\n"
+        },
+        {
+          "info": {
+            "name": "Update a scheduled agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.warp.dev/api/v1/agent/schedules/:scheduleId",
+            "params": [
+              {
+                "name": "scheduleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the scheduled agent"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an existing scheduled agent's configuration.\nAll fields except agent_config are required.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a scheduled agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.warp.dev/api/v1/agent/schedules/:scheduleId",
+            "params": [
+              {
+                "name": "scheduleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the scheduled agent"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a scheduled agent. This will stop all future scheduled runs.\n"
+        },
+        {
+          "info": {
+            "name": "Pause a scheduled agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.warp.dev/api/v1/agent/schedules/:scheduleId/pause",
+            "params": [
+              {
+                "name": "scheduleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the scheduled agent"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Pause a scheduled agent. The agent will not run until resumed.\n"
+        },
+        {
+          "info": {
+            "name": "Resume a scheduled agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.warp.dev/api/v1/agent/schedules/:scheduleId/resume",
+            "params": [
+              {
+                "name": "scheduleId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the scheduled agent"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Resume a paused scheduled agent. The agent will start running\naccording to its cron schedule.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
