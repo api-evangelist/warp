@@ -71,6 +71,8 @@ apis:
   humanURL: https://docs.warp.dev/reference/api-and-sdk/
   baseURL: https://app.warp.dev/api/v1
   tags:
+  - Agents
+  tags_raw:
   - agent
   properties:
   - type: OpenAPI
@@ -127,6 +129,8 @@ apis:
   humanURL: https://docs.warp.dev/reference/api-and-sdk/
   baseURL: https://app.warp.dev/api/v1
   tags:
+  - Schedules
+  tags_raw:
   - schedules
   properties:
   - type: OpenAPI
