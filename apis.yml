@@ -10,6 +10,18 @@ description: >-
   also provides Warp Drive for team collaboration and workflow sharing, and supports MCP
   servers for extending agent capabilities with custom tools and data sources.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
