@@ -83,7 +83,7 @@ apis:
   humanURL: https://docs.warp.dev/reference/api-and-sdk/
   baseURL: https://app.warp.dev/api/v1
   tags:
-  - agent
+  - Agents
   tags_raw:
   - agent
   properties:
