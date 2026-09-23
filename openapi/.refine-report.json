@@ -1,9 +1,7 @@
 {
   "provider": "warp",
   "sources": [
-    "warp-agent-api-openapi.yml",
-    "warp-harness-support-api-openapi.yml",
-    "warp-schedules-api-openapi.yml"
+    "_original/warp-oz-agent-api-openapi.yml"
   ],
   "outputs": [
     "warp-agent-api-openapi.yml",
@@ -13,6 +11,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "warp-oz-agent-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "warp-oz-agent-api-openapi.yml: declared missing tag: harness-support",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "warp-agent-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "warp-harness-support-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "warp-schedules-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

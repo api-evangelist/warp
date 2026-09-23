@@ -1,8 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Oz agent harness-support API
+  title: Oz Agent Harness Support API
   version: 1.0.0
-  description: "API for creating, managing, and querying Oz cloud agent runs.\n\nThese endpoints allow users to programmatically spawn agents, list runs, \nand retrieve detailed run information.\n"
+  description: 'API for creating, managing, and querying Oz cloud agent runs.
+
+
+    These endpoints allow users to programmatically spawn agents, list runs,
+
+    and retrieve detailed run information.'
   contact:
     name: Warp Support
     url: https://docs.warp.dev
@@ -27,9 +32,7 @@ paths:
 
         This may only be called from within a cloud agent execution environment whose
 
-        task already has an associated conversation (e.g. on a resumed run).
-
-        '
+        task already has an associated conversation (e.g. on a resumed run).'
       operationId: getTranscriptDownload
       tags:
       - harness-support

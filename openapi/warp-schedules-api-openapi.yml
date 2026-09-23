@@ -1,8 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Oz agent schedules API
+  title: Oz Agent Schedules API
   version: 1.0.0
-  description: "API for creating, managing, and querying Oz cloud agent runs.\n\nThese endpoints allow users to programmatically spawn agents, list runs, \nand retrieve detailed run information.\n"
+  description: 'API for creating, managing, and querying Oz cloud agent runs.
+
+
+    These endpoints allow users to programmatically spawn agents, list runs,
+
+    and retrieve detailed run information.'
   contact:
     name: Warp Support
     url: https://docs.warp.dev
@@ -13,7 +18,7 @@ servers:
 - url: https://app.warp.dev/api/v1
   description: Warp Server
 tags:
-- name: schedules
+- name: Schedules
   description: Operations for creating and managing scheduled agents
 paths:
   /agent/schedules:
@@ -21,12 +26,10 @@ paths:
       summary: Create a scheduled agent
       description: 'Create a new scheduled agent that runs on a cron schedule.
 
-        The agent will be triggered automatically based on the cron expression.
-
-        '
+        The agent will be triggered automatically based on the cron expression.'
       operationId: createScheduledAgent
       tags:
-      - schedules
+      - Schedules
       security:
       - bearerAuth: []
       requestBody:
@@ -81,12 +84,10 @@ paths:
       summary: List scheduled agents
       description: 'Retrieve all scheduled agents accessible to the authenticated user.
 
-        Results are sorted alphabetically by name.
-
-        '
+        Results are sorted alphabetically by name.'
       operationId: listScheduledAgents
       tags:
-      - schedules
+      - Schedules
       security:
       - bearerAuth: []
       responses:
@@ -113,12 +114,10 @@ paths:
       summary: Get scheduled agent details
       description: 'Retrieve detailed information about a specific scheduled agent,
 
-        including its configuration, history, and next scheduled run time.
-
-        '
+        including its configuration, history, and next scheduled run time.'
       operationId: getScheduledAgent
       tags:
-      - schedules
+      - Schedules
       security:
       - bearerAuth: []
       parameters:
@@ -163,12 +162,10 @@ paths:
       summary: Update a scheduled agent
       description: 'Update an existing scheduled agent''s configuration.
 
-        All fields except agent_config are required.
-
-        '
+        All fields except agent_config are required.'
       operationId: updateScheduledAgent
       tags:
-      - schedules
+      - Schedules
       security:
       - bearerAuth: []
       parameters:
@@ -217,12 +214,10 @@ paths:
                 $ref: '#/components/schemas/Error'
     delete:
       summary: Delete a scheduled agent
-      description: 'Delete a scheduled agent. This will stop all future scheduled runs.
-
-        '
+      description: Delete a scheduled agent. This will stop all future scheduled runs.
       operationId: deleteScheduledAgent
       tags:
-      - schedules
+      - Schedules
       security:
       - bearerAuth: []
       parameters:
@@ -266,12 +261,10 @@ paths:
   /agent/schedules/{scheduleId}/pause:
     post:
       summary: Pause a scheduled agent
-      description: 'Pause a scheduled agent. The agent will not run until resumed.
-
-        '
+      description: Pause a scheduled agent. The agent will not run until resumed.
       operationId: pauseScheduledAgent
       tags:
-      - schedules
+      - Schedules
       security:
       - bearerAuth: []
       parameters:
@@ -317,12 +310,10 @@ paths:
       summary: Resume a scheduled agent
       description: 'Resume a paused scheduled agent. The agent will start running
 
-        according to its cron schedule.
-
-        '
+        according to its cron schedule.'
       operationId: resumeScheduledAgent
       tags:
-      - schedules
+      - Schedules
       security:
       - bearerAuth: []
       parameters:
@@ -365,6 +356,205 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    MemoryStoreRef:
+      type: object
+      description: Reference to a memory store to attach to an agent.
+      required:
+      - uid
+      - access
+      - instructions
+      properties:
+        uid:
+          type: string
+          description: UID of the memory store.
+        access:
+          type: string
+          enum:
+          - read_write
+          - read_only
+          description: Access level for the store.
+        instructions:
+          type: string
+          description: Instructions for how the agent should use this memory store. Must not be empty.
+    InferenceProvidersConfig:
+      type: object
+      description: Inference provider settings used for LLM calls.
+      properties:
+        aws:
+          $ref: '#/components/schemas/AwsInferenceProviderConfig'
+    ScheduledAgentHistoryItem:
+      type: object
+      description: Scheduler-derived history metadata for a scheduled agent
+      properties:
+        last_ran:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp of the last successful run (RFC3339)
+        next_run:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Timestamp of the next scheduled run (RFC3339)
+    UpdateScheduledAgentRequest:
+      type: object
+      description: 'Request body for updating a scheduled agent.
+
+        Either prompt or agent_config.skill_spec or agent_config.skills is required.
+
+        '
+      required:
+      - name
+      - cron_schedule
+      - enabled
+      properties:
+        name:
+          type: string
+          description: Human-readable name for the schedule
+        cron_schedule:
+          type: string
+          description: Cron expression defining when the agent runs
+        prompt:
+          type: string
+          description: 'The prompt/instruction for the agent to execute.
+
+            Required unless agent_config.skill_spec or agent_config.skills is provided.
+
+            '
+        mode:
+          $ref: '#/components/schemas/AgentRunMode'
+          description: 'Optional query mode applied to every triggered run. Defaults to
+
+            `normal` when omitted. The server does not infer mode from prompt
+
+            prefixes such as `/plan`.
+
+            '
+        enabled:
+          type: boolean
+          description: Whether the schedule should be active
+        agent_uid:
+          type: string
+          format: uuid
+          description: 'Agent UID to use as the execution principal for this schedule.
+
+            Only valid for team-owned schedules.
+
+            '
+        agent_config:
+          $ref: '#/components/schemas/AmbientAgentConfig'
+    HarnessAuthSecrets:
+      type: object
+      description: 'Authentication secrets for third-party harnesses.
+
+        Only the secret for the harness specified gets injected into the environment.
+
+        '
+      properties:
+        claude_auth_secret_name:
+          type: string
+          description: 'Name of a managed secret for Claude Code harness authentication.
+
+            The secret must exist within the caller''s personal or team scope.
+
+            Only applicable when harness type is "claude".
+
+            '
+        codex_auth_secret_name:
+          type: string
+          description: 'Name of a managed secret for Codex harness authentication.
+
+            The secret must exist within the caller''s personal or team scope.
+
+            Only applicable when harness type is "codex".
+
+            '
+    ScheduledAgentItem:
+      type: object
+      required:
+      - id
+      - name
+      - cron_schedule
+      - enabled
+      - prompt
+      - created_at
+      - updated_at
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the scheduled agent
+        name:
+          type: string
+          description: Human-readable name for the schedule
+        cron_schedule:
+          type: string
+          description: Cron expression defining when the agent runs (e.g., "0 9 * * *" for daily at 9am UTC)
+        enabled:
+          type: boolean
+          description: Whether the schedule is currently active
+        prompt:
+          type: string
+          description: The prompt/instruction for the agent to execute
+        last_spawn_error:
+          type:
+          - string
+          - 'null'
+          description: Error message from the last failed spawn attempt, if any
+        agent_config:
+          $ref: '#/components/schemas/AmbientAgentConfig'
+        agent_uid:
+          type: string
+          format: uuid
+          description: UID of the agent that this schedule runs as
+        environment:
+          allOf:
+          - $ref: '#/components/schemas/CloudEnvironmentConfig'
+          description: Resolved environment configuration (if agent_config references an environment_id)
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the schedule was created (RFC3339)
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp when the schedule was last updated (RFC3339)
+        created_by:
+          $ref: '#/components/schemas/RunCreatorInfo'
+        updated_by:
+          $ref: '#/components/schemas/RunCreatorInfo'
+        history:
+          $ref: '#/components/schemas/ScheduledAgentHistoryItem'
+        scope:
+          $ref: '#/components/schemas/Scope'
+    CloudEnvironmentConfig:
+      type: object
+      description: Configuration for a cloud environment used by scheduled agents
+      properties:
+        name:
+          type: string
+          description: Human-readable name for the environment
+        description:
+          type:
+          - string
+          - 'null'
+          description: Optional description of the environment
+        docker_image:
+          type: string
+          description: Docker image to use (e.g., "ubuntu:latest" or "registry/repo:tag")
+        github_repos:
+          type: array
+          items:
+            $ref: '#/components/schemas/GitHubRepo'
+          description: List of GitHub repositories to clone into the environment
+        setup_commands:
+          type: array
+          items:
+            type: string
+          description: Shell commands to run during environment setup
+        providers:
+          $ref: '#/components/schemas/ProvidersConfig'
     SessionSharingConfig:
       type: object
       description: 'Configures sharing behavior for the run''s shared session.
@@ -399,6 +589,138 @@ components:
             link viewers must still be authenticated Warp users.
 
             '
+    ProvidersConfig:
+      type: object
+      description: Optional cloud provider configurations for automatic auth
+      properties:
+        gcp:
+          $ref: '#/components/schemas/GcpProviderConfig'
+        aws:
+          $ref: '#/components/schemas/AwsProviderConfig'
+    AwsInferenceProviderConfig:
+      type: object
+      description: 'Configures AWS Bedrock as the LLM inference provider for this
+
+        agent or run.
+
+        '
+      externalDocs:
+        description: AWS documentation on IAM OIDC federation
+        url: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html
+      properties:
+        disabled:
+          type: boolean
+          description: If true, opt out of Bedrock at this layer.
+        role_arn:
+          type: string
+          description: IAM role ARN to assume when calling Bedrock.
+        region:
+          type: string
+          description: AWS region used for STS when assuming the Bedrock inference role.
+    AwsProviderConfig:
+      type: object
+      description: AWS IAM role assumption settings
+      externalDocs:
+        description: AWS documentation on IAM OIDC federation
+        url: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html
+      required:
+      - role_arn
+      properties:
+        role_arn:
+          type: string
+          description: AWS IAM role ARN to assume
+    MCPServerConfig:
+      type: object
+      description: 'Configuration for an MCP server. Must have exactly one of: warp_id, command, or url.
+
+        '
+      properties:
+        warp_id:
+          type: string
+          description: Reference to a Warp shared MCP server by UUID
+        command:
+          type: string
+          description: Stdio transport - command to run
+        args:
+          type: array
+          items:
+            type: string
+          description: Stdio transport - command arguments
+        url:
+          type: string
+          format: uri
+          description: SSE/HTTP transport - server URL
+        env:
+          type: object
+          additionalProperties:
+            type: string
+          description: Environment variables for the server
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: HTTP headers for SSE/HTTP transport
+    Error:
+      type: object
+      description: 'Error response following RFC 7807 (Problem Details for HTTP APIs).
+
+        Includes backward-compatible extension members.
+
+
+        The response uses the `application/problem+json` content type.
+
+        Additional extension members (e.g., `auth_url`, `provider`) may be
+
+        present depending on the error code.
+
+        '
+      required:
+      - type
+      - title
+      - status
+      - error
+      properties:
+        type:
+          type: string
+          format: uri
+          description: 'A URI reference that identifies the problem type (RFC 7807).
+
+            Format: `https://docs.warp.dev/reference/api-and-sdk/troubleshooting/errors/{error_code}`
+
+            See PlatformErrorCode for the list of possible error codes.
+
+            '
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type (RFC 7807)
+        status:
+          type: integer
+          description: The HTTP status code for this occurrence of the problem (RFC 7807)
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem (RFC 7807)
+        instance:
+          type: string
+          description: The request path that generated this error (RFC 7807)
+        error:
+          type: string
+          description: 'Human-readable error message combining title and detail.
+
+            Backward-compatible extension member for older clients.
+
+            '
+        retryable:
+          type: boolean
+          description: 'Whether the request can be retried. When true, the error is transient
+
+            and the request may be retried. When false, retrying without addressing
+
+            the underlying cause will not succeed.
+
+            '
+        trace_id:
+          type: string
+          description: OpenTelemetry trace ID for debugging and support requests
     Harness:
       type: object
       description: 'Specifies which execution harness to use for the agent run.
@@ -425,63 +747,6 @@ components:
             - codex: Codex CLI harness
 
             '
-    Scope:
-      type: object
-      description: Ownership scope for a resource (team or personal)
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - User
-          - Team
-          description: Type of ownership ("User" for personal, "Team" for team-owned)
-        uid:
-          type: string
-          description: UID of the owning user or team
-    RunCreatorInfo:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - user
-          - service_account
-          description: Type of the creator principal
-        uid:
-          type: string
-          description: Unique identifier of the creator
-        display_name:
-          type: string
-          description: Display name of the creator
-        email:
-          type: string
-          description: Email address of the creator
-        photo_url:
-          type: string
-          format: uri
-          description: URL to the creator's photo
-    AwsProviderConfig:
-      type: object
-      description: AWS IAM role assumption settings
-      externalDocs:
-        description: AWS documentation on IAM OIDC federation
-        url: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html
-      required:
-      - role_arn
-      properties:
-        role_arn:
-          type: string
-          description: AWS IAM role ARN to assume
-    DeleteScheduledAgentResponse:
-      type: object
-      required:
-      - success
-      properties:
-        success:
-          type: boolean
-          description: Whether the deletion was successful
     ListScheduledAgentsResponse:
       type: object
       required:
@@ -492,153 +757,6 @@ components:
           items:
             $ref: '#/components/schemas/ScheduledAgentItem'
           description: List of scheduled agents
-    ScheduledAgentHistoryItem:
-      type: object
-      description: Scheduler-derived history metadata for a scheduled agent
-      properties:
-        last_ran:
-          type: string
-          format: date-time
-          nullable: true
-          description: Timestamp of the last successful run (RFC3339)
-        next_run:
-          type: string
-          format: date-time
-          nullable: true
-          description: Timestamp of the next scheduled run (RFC3339)
-    CloudEnvironmentConfig:
-      type: object
-      description: Configuration for a cloud environment used by scheduled agents
-      properties:
-        name:
-          type: string
-          description: Human-readable name for the environment
-        description:
-          type: string
-          nullable: true
-          description: Optional description of the environment
-        docker_image:
-          type: string
-          description: Docker image to use (e.g., "ubuntu:latest" or "registry/repo:tag")
-        github_repos:
-          type: array
-          items:
-            $ref: '#/components/schemas/GitHubRepo'
-          description: List of GitHub repositories to clone into the environment
-        setup_commands:
-          type: array
-          items:
-            type: string
-          description: Shell commands to run during environment setup
-        providers:
-          $ref: '#/components/schemas/ProvidersConfig'
-    MemoryStoreRef:
-      type: object
-      description: Reference to a memory store to attach to an agent.
-      required:
-      - uid
-      - access
-      - instructions
-      properties:
-        uid:
-          type: string
-          description: UID of the memory store.
-        access:
-          type: string
-          enum:
-          - read_write
-          - read_only
-          description: Access level for the store.
-        instructions:
-          type: string
-          description: Instructions for how the agent should use this memory store. Must not be empty.
-    ProvidersConfig:
-      type: object
-      description: Optional cloud provider configurations for automatic auth
-      properties:
-        gcp:
-          $ref: '#/components/schemas/GcpProviderConfig'
-        aws:
-          $ref: '#/components/schemas/AwsProviderConfig'
-    ScheduledAgentItem:
-      type: object
-      required:
-      - id
-      - name
-      - cron_schedule
-      - enabled
-      - prompt
-      - created_at
-      - updated_at
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the scheduled agent
-        name:
-          type: string
-          description: Human-readable name for the schedule
-        cron_schedule:
-          type: string
-          description: Cron expression defining when the agent runs (e.g., "0 9 * * *" for daily at 9am UTC)
-        enabled:
-          type: boolean
-          description: Whether the schedule is currently active
-        prompt:
-          type: string
-          description: The prompt/instruction for the agent to execute
-        last_spawn_error:
-          type: string
-          nullable: true
-          description: Error message from the last failed spawn attempt, if any
-        agent_config:
-          $ref: '#/components/schemas/AmbientAgentConfig'
-        agent_uid:
-          type: string
-          format: uuid
-          description: UID of the agent that this schedule runs as
-        environment:
-          allOf:
-          - $ref: '#/components/schemas/CloudEnvironmentConfig'
-          description: Resolved environment configuration (if agent_config references an environment_id)
-        created_at:
-          type: string
-          format: date-time
-          description: Timestamp when the schedule was created (RFC3339)
-        updated_at:
-          type: string
-          format: date-time
-          description: Timestamp when the schedule was last updated (RFC3339)
-        created_by:
-          $ref: '#/components/schemas/RunCreatorInfo'
-        updated_by:
-          $ref: '#/components/schemas/RunCreatorInfo'
-        history:
-          $ref: '#/components/schemas/ScheduledAgentHistoryItem'
-        scope:
-          $ref: '#/components/schemas/Scope'
-    GcpProviderConfig:
-      type: object
-      description: GCP Workload Identity Federation settings
-      required:
-      - project_number
-      - workload_identity_federation_pool_id
-      - workload_identity_federation_provider_id
-      externalDocs:
-        description: Google documentation on Workload Identity Federation
-        url: https://docs.cloud.google.com/iam/docs/workload-identity-federation
-      properties:
-        project_number:
-          type: string
-          description: GCP project number
-        workload_identity_federation_pool_id:
-          type: string
-          description: Workload Identity Federation pool ID
-        workload_identity_federation_provider_id:
-          type: string
-          description: Workload Identity Federation provider ID
-        service_account_email:
-          type: string
-          description: Optional GCP service account email to impersonate
     AmbientAgentConfig:
       type: object
       description: Configuration for a cloud agent run
@@ -743,69 +861,21 @@ components:
             the workspace''s admin-configured defaults.
 
             '
-    GitHubRepo:
+    Scope:
       type: object
+      description: Ownership scope for a resource (team or personal)
       required:
-      - owner
-      - repo
+      - type
       properties:
-        owner:
+        type:
           type: string
-          description: GitHub repository owner (user or organization)
-        repo:
+          enum:
+          - User
+          - Team
+          description: Type of ownership ("User" for personal, "Team" for team-owned)
+        uid:
           type: string
-          description: GitHub repository name
-    AwsInferenceProviderConfig:
-      type: object
-      description: 'Configures AWS Bedrock as the LLM inference provider for this
-
-        agent or run.
-
-        '
-      externalDocs:
-        description: AWS documentation on IAM OIDC federation
-        url: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html
-      properties:
-        disabled:
-          type: boolean
-          description: If true, opt out of Bedrock at this layer.
-        role_arn:
-          type: string
-          description: IAM role ARN to assume when calling Bedrock.
-        region:
-          type: string
-          description: AWS region used for STS when assuming the Bedrock inference role.
-    MCPServerConfig:
-      type: object
-      description: 'Configuration for an MCP server. Must have exactly one of: warp_id, command, or url.
-
-        '
-      properties:
-        warp_id:
-          type: string
-          description: Reference to a Warp shared MCP server by UUID
-        command:
-          type: string
-          description: Stdio transport - command to run
-        args:
-          type: array
-          items:
-            type: string
-          description: Stdio transport - command arguments
-        url:
-          type: string
-          format: uri
-          description: SSE/HTTP transport - server URL
-        env:
-          type: object
-          additionalProperties:
-            type: string
-          description: Environment variables for the server
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-          description: HTTP headers for SSE/HTTP transport
+          description: UID of the owning user or team
     AgentRunMode:
       type: string
       description: "Query mode for an agent run.\n  - normal: Standard user query (default).\n  - plan: Planning Mode. The agent researches and creates a plan, then waits for approval before execution.\n  - orchestrate: Orchestration Mode. The agent proposes an orchestration plan and must not start child agents until approved.\n"
@@ -814,12 +884,36 @@ components:
       - plan
       - orchestrate
       default: normal
-    InferenceProvidersConfig:
+    RunCreatorInfo:
       type: object
-      description: Inference provider settings used for LLM calls.
       properties:
-        aws:
-          $ref: '#/components/schemas/AwsInferenceProviderConfig'
+        type:
+          type: string
+          enum:
+          - user
+          - service_account
+          description: Type of the creator principal
+        uid:
+          type: string
+          description: Unique identifier of the creator
+        display_name:
+          type: string
+          description: Display name of the creator
+        email:
+          type: string
+          description: Email address of the creator
+        photo_url:
+          type: string
+          format: uri
+          description: URL to the creator's photo
+    DeleteScheduledAgentResponse:
+      type: object
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          description: Whether the deletion was successful
     CreateScheduledAgentRequest:
       type: object
       description: 'Request body for creating a new scheduled agent.
@@ -874,140 +968,41 @@ components:
             Defaults to true for users on a single team.
 
             '
-    HarnessAuthSecrets:
+    GitHubRepo:
       type: object
-      description: 'Authentication secrets for third-party harnesses.
-
-        Only the secret for the harness specified gets injected into the environment.
-
-        '
-      properties:
-        claude_auth_secret_name:
-          type: string
-          description: 'Name of a managed secret for Claude Code harness authentication.
-
-            The secret must exist within the caller''s personal or team scope.
-
-            Only applicable when harness type is "claude".
-
-            '
-        codex_auth_secret_name:
-          type: string
-          description: 'Name of a managed secret for Codex harness authentication.
-
-            The secret must exist within the caller''s personal or team scope.
-
-            Only applicable when harness type is "codex".
-
-            '
-    UpdateScheduledAgentRequest:
-      type: object
-      description: 'Request body for updating a scheduled agent.
-
-        Either prompt or agent_config.skill_spec or agent_config.skills is required.
-
-        '
       required:
-      - name
-      - cron_schedule
-      - enabled
+      - owner
+      - repo
       properties:
-        name:
+        owner:
           type: string
-          description: Human-readable name for the schedule
-        cron_schedule:
+          description: GitHub repository owner (user or organization)
+        repo:
           type: string
-          description: Cron expression defining when the agent runs
-        prompt:
-          type: string
-          description: 'The prompt/instruction for the agent to execute.
-
-            Required unless agent_config.skill_spec or agent_config.skills is provided.
-
-            '
-        mode:
-          $ref: '#/components/schemas/AgentRunMode'
-          description: 'Optional query mode applied to every triggered run. Defaults to
-
-            `normal` when omitted. The server does not infer mode from prompt
-
-            prefixes such as `/plan`.
-
-            '
-        enabled:
-          type: boolean
-          description: Whether the schedule should be active
-        agent_uid:
-          type: string
-          format: uuid
-          description: 'Agent UID to use as the execution principal for this schedule.
-
-            Only valid for team-owned schedules.
-
-            '
-        agent_config:
-          $ref: '#/components/schemas/AmbientAgentConfig'
-    Error:
+          description: GitHub repository name
+    GcpProviderConfig:
       type: object
-      description: 'Error response following RFC 7807 (Problem Details for HTTP APIs).
-
-        Includes backward-compatible extension members.
-
-
-        The response uses the `application/problem+json` content type.
-
-        Additional extension members (e.g., `auth_url`, `provider`) may be
-
-        present depending on the error code.
-
-        '
+      description: GCP Workload Identity Federation settings
       required:
-      - type
-      - title
-      - status
-      - error
+      - project_number
+      - workload_identity_federation_pool_id
+      - workload_identity_federation_provider_id
+      externalDocs:
+        description: Google documentation on Workload Identity Federation
+        url: https://docs.cloud.google.com/iam/docs/workload-identity-federation
       properties:
-        type:
+        project_number:
           type: string
-          format: uri
-          description: 'A URI reference that identifies the problem type (RFC 7807).
-
-            Format: `https://docs.warp.dev/reference/api-and-sdk/troubleshooting/errors/{error_code}`
-
-            See PlatformErrorCode for the list of possible error codes.
-
-            '
-        title:
+          description: GCP project number
+        workload_identity_federation_pool_id:
           type: string
-          description: A short, human-readable summary of the problem type (RFC 7807)
-        status:
-          type: integer
-          description: The HTTP status code for this occurrence of the problem (RFC 7807)
-        detail:
+          description: Workload Identity Federation pool ID
+        workload_identity_federation_provider_id:
           type: string
-          description: A human-readable explanation specific to this occurrence of the problem (RFC 7807)
-        instance:
+          description: Workload Identity Federation provider ID
+        service_account_email:
           type: string
-          description: The request path that generated this error (RFC 7807)
-        error:
-          type: string
-          description: 'Human-readable error message combining title and detail.
-
-            Backward-compatible extension member for older clients.
-
-            '
-        retryable:
-          type: boolean
-          description: 'Whether the request can be retried. When true, the error is transient
-
-            and the request may be retried. When false, retrying without addressing
-
-            the underlying cause will not succeed.
-
-            '
-        trace_id:
-          type: string
-          description: OpenTelemetry trace ID for debugging and support requests
+          description: Optional GCP service account email to impersonate
   securitySchemes:
     bearerAuth:
       type: http
