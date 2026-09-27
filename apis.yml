@@ -79,7 +79,7 @@ apis:
   - type: GettingStarted
     url: https://docs.warp.dev/reference/cli/quickstart
 - aid: warp:warp-agent-api
-  name: Warp agent API
+  name: Warp Agent API
   description: Operations for running and managing cloud agents
   humanURL: https://docs.warp.dev/reference/api-and-sdk/
   baseURL: https://app.warp.dev/api/v1
@@ -109,7 +109,7 @@ apis:
   - type: Examples
     url: examples/warp-create-schedule-example.json
 - aid: warp:warp-harness-support-api
-  name: Warp harness-support API
+  name: Warp Harness Support API
   description: The harness-support API from Warp — 1 operation(s) for harness-support.
   humanURL: https://docs.warp.dev/reference/api-and-sdk/
   baseURL: https://app.warp.dev/api/v1
@@ -137,7 +137,7 @@ apis:
   - type: Examples
     url: examples/warp-create-schedule-example.json
 - aid: warp:warp-schedules-api
-  name: Warp schedules API
+  name: Warp Schedules API
   description: Operations for creating and managing scheduled agents
   humanURL: https://docs.warp.dev/reference/api-and-sdk/
   baseURL: https://app.warp.dev/api/v1
