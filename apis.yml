@@ -167,6 +167,9 @@ apis:
   - type: Examples
     url: examples/warp-create-schedule-example.json
 common:
+  - type: CapabilityMap
+    url: capabilities/warp-capability-edges.yml
+    name: Warp Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/warp/overview
   - type: AgenticAccess
