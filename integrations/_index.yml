@@ -16,3 +16,103 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: warp-homebrew
+  label: Homebrew
+  partner: homebrew
+  partner_name: Homebrew
+  category: official CLI (Homebrew)
+  type: register
+  channel: package-registry
+  evidence: https://formulae.brew.sh/cask/warp-agent-cli
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Homebrew (public package index)
+    spec_file: null
+    packages:
+    - name: warp-agent-cli
+      kind: cask
+      version: 0.2026.10.14.08.27.stable_01
+      released: null
+      lapsed: false
+      page: https://formulae.brew.sh/cask/warp-agent-cli
+      cli: cask binary artifact
+      repo_leg: domain:warp.dev
+      publisher_leg: artifact-domain:warp.dev
+      matched_by: domain
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: warp-agent-skills-own-github-org
+  label: Agent Skills (own GitHub org)
+  partner_name: Agent Skills (own GitHub org)
+  category: Agent Skills package
+  type: register
+  channel: provider-built
+  evidence: https://github.com/warpdotdev/warp
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: 'provider''s own GitHub org (GitHub REST API: repo + git tree holds SKILL.md)'
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-repo
+    matched_org: warpdotdev
+    matched_by: org-profile-domain:warp.dev
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: warp-skills-sh
+  label: skills.sh
+  partner_name: skills.sh
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://www.skills.sh/warpdotdev/common-skills
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: skills.sh (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: warpdotdev
+    matched_by: org-profile-domain:warp.dev
+    sample_skills:
+    - brandalf
+    - check-impl-against-spec
+    - complain
+    - council
+    - create-pr
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: warp-skillsmp-skillsmp-com
+  label: SkillsMP (skillsmp.com)
+  partner_name: SkillsMP (skillsmp.com)
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://skillsmp.com/creators/warpdotdev/warp
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: SkillsMP (skillsmp.com) (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: warpdotdev
+    matched_by: org-profile-domain:warp.dev
+    sample_skills:
+    - resources-bundled-mcp-skills-figma-figma-implement-design
+    - resources-channel-gated-skills-dogfood-triage-vulnerabilities
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
