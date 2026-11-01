@@ -1,4 +1,4 @@
-# Warp (warp)
+# Warp
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,52 +64,166 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Warp is an open-source, Rust-based, GPU-accelerated agentic development environment built on top of a modern terminal. It combines a high-performance terminal with AI-powered cloud agents (the Oz platform) to help developers build, test, deploy, and debug code autonomously. The Oz API enables external systems to trigger and monitor cloud agent runs over HTTP, making Warp suitable for CI pipelines, backend services, and internal tooling without requiring the desktop app.
+Warp is an open-source, Rust-based, GPU-accelerated agentic development environment built on top of a modern terminal. It combines a high-performance terminal with AI-powered cloud agents (the Oz platform) to help developers build, test, deploy, and debug code autonomously. The Oz API lets external systems trigger and monitor cloud agent runs over HTTP, making it suitable for CI pipelines, backend services, and internal tooling. Warp also provides Warp Drive for team collaboration and workflow sharing, and supports MCP servers for extending agent capabilities with custom tools and data sources.
 
-APIs.json: [https://raw.githubusercontent.com/api-evangelist/warp/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/warp/refs/heads/main/apis.yml)
+**Areas:** Developer Tools · Terminal · AI Agents · Cloud Agents · Agentic Development
 
-Run on Naftiko: [https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=warp-api-evangelist&utm_content=repo](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=warp-api-evangelist&utm_content=repo)
+## Warp on APIs.io
 
-## Tags
+Everything profiled for Warp is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/warp/](https://apis.io/providers/warp/)** — or go straight to one of the APIs or properties below.
 
-- Developer Tools
-- Terminal
-- AI Agents
-- Cloud Agents
-- Agentic Development
+### APIs (5)
 
-## APIs
+- [Warp Enterprise Analytics API](https://apis.io/apis/warp/enterprise-analytics-api/) — The Enterprise Analytics API provides team usage metrics and administrative insights for Enterprise plan customers. It enables organizations to track agent…
+- [Warp Oz CLI](https://apis.io/apis/warp/oz-cli/) — The Oz CLI is a command-line interface for interacting with the Warp Oz agent platform. It allows developers to trigger cloud agent runs, manage…
+- [Warp Agent API](https://apis.io/apis/warp/warp-agent-api/) — Operations for running and managing cloud agents
+- [Warp Harness Support API](https://apis.io/apis/warp/warp-harness-support-api/) — The harness-support API from Warp — 1 operation(s) for harness-support.
+- [Warp Schedules API](https://apis.io/apis/warp/warp-schedules-api/) — Operations for creating and managing scheduled agents
 
-- **Warp Oz Agent API** — Create and monitor cloud agent runs over HTTP; manage runs, schedules, agent identities, and conversations. [Documentation](https://docs.warp.dev/reference/api-and-sdk/)
-- **Warp Enterprise Analytics API** — Team usage metrics and administrative insights for Enterprise plan customers. [Documentation](https://docs.warp.dev/enterprise/enterprise-features/analytics-api/)
-- **Warp Oz CLI** — Command-line interface for triggering cloud agent runs and managing environments headlessly. [Documentation](https://docs.warp.dev/reference/cli/)
+### Published properties
 
-## Plans / Rate Limits / FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- [Plans & Pricing](plans/warp-plans-pricing.yml)
-- [Rate Limits](rate-limits/warp-rate-limits.yml)
-- [FinOps](finops/warp-finops.yml)
+#### Agentic access (1)
 
-## Timestamps
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Created: 2026-06-12
-- Modified: 2026-06-12
+- [Warp Agentic Access](https://apis.io/agentic-access/warp/warp-agentic-access/)
 
-## Common Properties
+#### JSON Schema (3)
 
-| Type | URL |
-|------|-----|
-| Website | https://www.warp.dev/ |
-| Documentation | https://docs.warp.dev/ |
-| GitHub Organization | https://github.com/warpdotdev |
-| LinkedIn | https://www.linkedin.com/company/warpdotdev |
-| X (Twitter) | https://x.com/warpdotdev |
-| Blog | https://www.warp.dev/blog |
-| Changelog | https://docs.warp.dev/changelog/ |
-| Pricing | https://www.warp.dev/pricing |
-| Status Page | https://status.warp.dev/ |
-| MCP Integration | https://docs.warp.dev/agent-platform/capabilities/mcp/ |
+The data models the API reads and writes.
 
-## Maintainers
+- [RunItem](https://apis.io/schemas/warp/warp-run/)
+- [RunAgentRequest](https://apis.io/schemas/warp/warp-run-agent-request/)
+- [ScheduledAgentItem](https://apis.io/schemas/warp/warp-scheduled-agent/)
 
-- Kin Lane / kin@apievangelist.com
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Warp Context](https://apis.io/jsonld/warp/warp-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Warp Oz Agent API Vocabulary](https://apis.io/vocabularies/warp/warp-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Warp Create Schedule Example](https://apis.io/examples/warp/warp-create-schedule-example/)
+- [Warp List Runs Example](https://apis.io/examples/warp/warp-list-runs-example/)
+- [Warp Run Agent Example](https://apis.io/examples/warp/warp-run-agent-example/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [Oz agent API](https://apis.io/collections/warp/open-warp-agent-api/)
+- [Oz agent harness-support API](https://apis.io/collections/warp/open-warp-harness-support-api/)
+- [Oz agent schedules API](https://apis.io/collections/warp/open-warp-schedules-api/)
+- [Oz agent API](https://apis.io/collections/warp/postman-warp-agent-api/)
+- [Oz agent harness-support API](https://apis.io/collections/warp/postman-warp-harness-support-api/)
+- [Oz agent schedules API](https://apis.io/collections/warp/postman-warp-schedules-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Warp — jsonschema rules](https://apis.io/rules/warp/warp-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Warp Authentication](https://apis.io/security/warp/warp-authentication/)
+- [Warp Domain Security](https://apis.io/security/warp/warp-domain-security/)
+- [Warp Trust Center](https://apis.io/security/warp/warp-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Warp Plans Pricing](https://apis.io/plans/warp/warp-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Warp Rate Limits](https://apis.io/rate-limits/warp/warp-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Warp Finops](https://apis.io/finops/warp/warp-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.warp.dev/)
+- [Documentation](https://docs.warp.dev/)
+- [Pricing](https://www.warp.dev/pricing)
+- [Changelog](https://docs.warp.dev/changelog/)
+- [Blog](https://www.warp.dev/blog)
+- [GitHub](https://github.com/warpdotdev)
+- [Status](https://status.warp.dev/)
+
+## API Evangelist rating
+
+**Kin Score 43.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 67.7 |
+| Contract governance | 23.5 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 36.9 |
+| Access clarity | 26.3 |
+
+**Agent readiness 29.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 21.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/warp/](https://apis.io/providers/warp/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Warp: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/warp/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
